@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>IskilAutos</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Supabase CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;font-family:'DM Sans',sans-serif;background:#0B1D3E;color:#111827}
+button{font-family:'DM Sans',sans-serif;cursor:pointer;border:none;background:none}
+input,select,textarea{font-family:'DM Sans',sans-serif;outline:none}
+
+:root{
+  --navy:#0B1D3E;
+  --navy2:#132347;
+  --blue:#1D4ED8;
+  --blue2:#2563EB;
+  --green:#16A34A;
+  --wa:#25D366;
+  --muted:#6B7280;
+  --border:#E5E7EB;
+  --bg:#F2F4F8;
+  --white:#fff;
+  --red:#DC2626;
+  --orange:#EA580C;
+}
+
+/* ── SHELL ── */
+.shell{
+  position:fixed;inset:0;display:flex;flex-direction:column;
+  max-width:480px;margin:0 auto;background:var(--bg);
+  box-shadow:0 0 60px rgba(0,0,0,.4);
+}
+
+/* ── HEADER ── */
+.hdr{flex-shrink:0;background:var(--navy);padding:12px 16px 10px;z-index:100}
+.hdr-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.logo{display:flex;align-items:center;gap:8px;cursor:pointer}
+.logo-mark{width:32px;height:32px;border-radius:8px;background:var(--blue2);display:flex;align-items:center;justify-content:center}
+.logo-mark svg{width:17px;height:17px;fill:white}
+.logo-name{font-family:'Sora',sans-serif;font-weight:800;font-size:15px;color:white;line-height:1}
+.logo-sub{font-size:9px;color:#93C5FD;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.hdr-actions{display:flex;gap:7px;align-items:center}
+.hdr-wa{display:flex;align-items:center;gap:5px;background:var(--wa);color:white;border-radius:18px;padding:7px 12px;font-size:12px;font-weight:700}
+.hdr-wa svg{width:13px;height:13px;fill:white}
+.hdr-admin-btn{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.1);color:white;border-radius:8px;padding:7px 10px;font-size:11px;font-weight:700;border:1px solid rgba(255,255,255,.15)}
+.hdr-admin-btn svg{width:13px;height:13px;stroke:white;stroke-width:2;fill:none}
+.hdr-menu{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center}
+.hdr-menu svg{width:17px;height:17px;stroke:white;stroke-width:2;fill:none}
+.hdr-search{display:flex;gap:8px;align-items:center}
+.search-box{flex:1;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border-radius:10px;padding:9px 13px}
+.search-box svg{width:14px;height:14px;stroke:rgba(255,255,255,.5);stroke-width:2;fill:none;flex-shrink:0}
+.search-box input{flex:1;background:none;border:none;color:white;font-size:13px;min-width:0}
+.search-box input::placeholder{color:rgba(255,255,255,.4)}
+.hdr-filter-btn{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center}
+.hdr-filter-btn svg{width:15px;height:15px;stroke:white;stroke-width:2;fill:none}
+
+/* ── BOTTOM NAV ── */
+.bnav{flex-shrink:0;background:var(--white);border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr);padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -2px 12px rgba(0,0,0,.07);z-index:100}
+.bitem{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:9px 4px 7px;gap:3px;color:var(--muted);position:relative}
+.bitem.active{color:var(--blue2)}
+.bitem.active::after{content:'';position:absolute;top:0;left:25%;right:25%;height:2.5px;background:var(--blue2);border-radius:0 0 2px 2px}
+.bitem svg{width:21px;height:21px;stroke:currentColor;stroke-width:2;fill:none}
+.bitem span{font-size:10px;font-weight:600}
+
+/* ── SCROLL ── */
+.scroll{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.scroll::-webkit-scrollbar{display:none}
+
+/* ── PAGES ── */
+.page{display:none}
+.page.active{display:block}
+
+/* ══ TRUST BAR ══ */
+.trust{background:var(--blue2);display:flex;justify-content:space-around;padding:8px 12px}
+.trust-item{display:flex;align-items:center;gap:5px;color:white;font-size:11px;font-weight:600}
+.trust-item svg{width:12px;height:12px;stroke:white;stroke-width:2.5;fill:none}
+
+/* ══ BANNER ══ */
+.banner{background:linear-gradient(135deg,var(--navy) 0%,#1a3060 100%);padding:20px 16px 22px;position:relative;overflow:hidden}
+.banner::before{content:'';position:absolute;right:-50px;bottom:-50px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(29,78,216,.3) 0%,transparent 70%)}
+.banner h1{font-family:'Sora',sans-serif;font-size:21px;font-weight:800;color:white;line-height:1.25;margin-bottom:6px}
+.banner h1 em{color:#60A5FA;font-style:normal}
+.banner p{color:rgba(255,255,255,.6);font-size:12px;line-height:1.6;margin-bottom:14px}
+.banner-btns{display:flex;gap:9px}
+.btn-bp{background:var(--blue2);color:white;border-radius:9px;padding:10px 16px;font-size:13px;font-weight:700}
+.btn-bs{background:rgba(255,255,255,.1);color:white;border-radius:9px;padding:10px 16px;font-size:13px;font-weight:700;border:1px solid rgba(255,255,255,.2)}
+
+/* ══ SECTION ══ */
+.sec{padding:14px 16px}
+.sec-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}
+.sec-title{font-family:'Sora',sans-serif;font-size:15px;font-weight:800;color:var(--navy)}
+.sec-link{color:var(--blue2);font-size:12px;font-weight:600}
+
+/* ══ BRANDS ══ */
+.cat-row{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.cat-row::-webkit-scrollbar{display:none}
+.cat{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer}
+.cat-ico{width:54px;height:42px;border-radius:9px;background:white;display:flex;align-items:center;justify-content:center;border:2px solid transparent;overflow:hidden;transition:border-color .15s}
+.cat-ico img{width:40px;height:30px;object-fit:contain}
+.cat.active .cat-ico{border-color:var(--blue2)}
+.cat-lbl{font-size:10px;font-weight:600;color:var(--muted)}
+.cat.active .cat-lbl{color:var(--blue2)}
+
+/* ══ CHIPS ══ */
+.chips{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding:0 16px 12px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex-shrink:0;border:1.5px solid var(--border);border-radius:18px;padding:6px 13px;font-size:12px;font-weight:600;color:var(--muted);background:white;white-space:nowrap}
+.chip.on{border-color:var(--blue2);color:var(--blue2);background:#EFF6FF}
+
+/* ══ 3-COL GRID ══ */
+.car-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.cgcard{background:white;border-radius:11px;overflow:hidden;cursor:pointer;box-shadow:0 1px 6px rgba(0,0,0,.08);transition:transform .15s;position:relative}
+.cgcard:active{transform:scale(.96)}
+.cgcard-img{position:relative;height:76px;background:#E5E7EB;overflow:hidden}
+.cgcard-img img{width:100%;height:100%;object-fit:cover;display:block}
+.cgcard-img .placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#E5E7EB,#D1D5DB)}
+.cgcard-img .placeholder svg{width:28px;height:28px;stroke:#9CA3AF;stroke-width:1.5;fill:none}
+.cgbadge{position:absolute;top:5px;left:5px;padding:2px 5px;border-radius:4px;font-size:8px;font-weight:800}
+.badge-u{background:rgba(0,0,0,.6);color:white}
+.badge-n{background:#16A34A;color:white}
+.cgfav{position:absolute;top:4px;right:4px;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center}
+.cgfav svg{width:10px;height:10px;stroke:#EF4444;stroke-width:2.5;fill:none}
+.cgcard-body{padding:7px 8px 9px}
+.cgyr{font-size:9px;color:var(--muted);margin-bottom:1px}
+.cgname{font-family:'Sora',sans-serif;font-size:10px;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:3px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.cgprice{font-family:'Sora',sans-serif;font-size:11px;font-weight:800;color:var(--blue2);margin-bottom:3px}
+.cgloc{display:flex;align-items:center;gap:2px;font-size:9px;color:var(--muted)}
+.cgloc svg{width:9px;height:9px;stroke:var(--muted);stroke-width:2;fill:none}
+
+/* ══ LOADING SPINNER ══ */
+.spinner{display:flex;align-items:center;justify-content:center;padding:40px 0;color:var(--muted);flex-direction:column;gap:10px}
+.spin{width:28px;height:28px;border:3px solid var(--border);border-top-color:var(--blue2);border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ══ BUY PAGE ══ */
+.filter-bar{background:white;border-bottom:1px solid var(--border);display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding:10px 16px}
+.filter-bar::-webkit-scrollbar{display:none}
+.fchip{flex-shrink:0;border:1.5px solid var(--border);border-radius:18px;padding:6px 12px;font-size:12px;font-weight:600;color:var(--muted);background:white;white-space:nowrap}
+.fchip.on{border-color:var(--blue2);color:var(--blue2);background:#EFF6FF}
+.rbar{display:flex;justify-content:space-between;align-items:center;padding:10px 16px 4px}
+.rcount{font-family:'Sora',sans-serif;font-size:14px;font-weight:700}
+
+/* ══ DETAIL ══ */
+.det-back{display:flex;align-items:center;gap:6px;color:var(--blue2);font-size:13px;font-weight:700;padding:12px 16px;background:white;border-bottom:1px solid var(--border)}
+.det-back svg{width:16px;height:16px;stroke:var(--blue2);stroke-width:2.5;fill:none}
+.det-gal{background:var(--navy);position:relative}
+.det-main{width:100%;height:230px;object-fit:cover;display:block;background:#1a2e55}
+.det-glabel{position:absolute;bottom:10px;left:12px;background:rgba(0,0,0,.65);color:white;padding:3px 9px;border-radius:5px;font-size:10px;font-weight:600}
+.det-gcnt{position:absolute;bottom:10px;right:12px;background:rgba(0,0,0,.65);color:white;padding:3px 9px;border-radius:5px;font-size:10px;font-weight:600}
+.det-thumbs{display:flex;gap:7px;padding:9px 16px;background:white;overflow-x:auto;scrollbar-width:none}
+.det-thumbs::-webkit-scrollbar{display:none}
+.det-thumb{width:62px;height:46px;border-radius:6px;overflow:hidden;flex-shrink:0;border:2px solid transparent;cursor:pointer;background:#E5E7EB}
+.det-thumb img{width:100%;height:100%;object-fit:cover}
+.det-thumb.on{border-color:var(--blue2)}
+.det-info{background:white;padding:16px;margin-top:8px}
+.dtags{display:flex;gap:6px;margin-bottom:9px;flex-wrap:wrap}
+.dtag{padding:3px 9px;border-radius:18px;font-size:10px;font-weight:700}
+.dtag-u{background:#F1F5F9;color:var(--muted)}
+.dtag-n{background:#DCFCE7;color:var(--green)}
+.dtag-d{background:#EFF6FF;color:var(--blue2)}
+.dtitle{font-family:'Sora',sans-serif;font-size:18px;font-weight:800;color:var(--navy);margin-bottom:5px;line-height:1.25}
+.dprice{font-family:'Sora',sans-serif;font-size:20px;font-weight:800;color:var(--blue2);margin-bottom:14px}
+.dspecs{border-top:1px solid var(--border);padding-top:12px}
+.ds{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)}
+.ds:last-child{border:none}
+.dsl{font-size:12px;color:var(--muted)}
+.dsr{font-size:12px;font-weight:600}
+.det-cta{background:white;margin-top:8px;padding:14px 16px;display:flex;flex-direction:column;gap:9px}
+.btn-wa{background:var(--wa);color:white;border-radius:11px;padding:14px;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;width:100%}
+.btn-wa svg{width:18px;height:18px;fill:white}
+.btn-call{background:var(--blue2);color:white;border-radius:11px;padding:14px;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;width:100%}
+.btn-call svg{width:17px;height:17px;stroke:white;stroke-width:2;fill:none}
+.det-desc{background:white;margin-top:8px;padding:16px}
+.det-dtitle{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;margin-bottom:8px}
+.det-dtext{font-size:13px;color:var(--muted);line-height:1.7;overflow:hidden;max-height:44px;transition:max-height .3s}
+.det-dtext.open{max-height:400px}
+.det-dmore{color:var(--blue2);font-size:12px;font-weight:700;margin-top:6px}
+.feats-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:12px}
+.feat-item{display:flex;align-items:center;gap:7px;background:var(--bg);padding:9px 10px;border-radius:8px}
+.feat-item svg{width:12px;height:12px;stroke:var(--green);stroke-width:2.5;fill:none;flex-shrink:0}
+.feat-item span{font-size:11px;font-weight:500}
+
+/* ══ SELL PAGE ══ */
+.sell-hero{background:var(--navy);padding:22px 16px 26px;text-align:center}
+.sell-hero h1{font-family:'Sora',sans-serif;font-size:21px;font-weight:800;color:white;margin-bottom:6px}
+.sell-hero p{color:rgba(255,255,255,.6);font-size:13px;line-height:1.6;max-width:280px;margin:0 auto}
+.sell-body{padding:14px 16px}
+.wa-hint{background:#F0FDF4;border:1.5px solid #BBF7D0;border-radius:10px;padding:12px 13px;display:flex;gap:8px;margin-bottom:13px}
+.wa-hint svg{width:16px;height:16px;fill:var(--green);flex-shrink:0;margin-top:1px}
+.wa-hint p{font-size:12px;color:#166534;line-height:1.5}
+.upload-z{border:2px dashed var(--border);border-radius:11px;padding:22px 16px;text-align:center;background:white;margin-bottom:13px;cursor:pointer}
+.upload-z svg{width:26px;height:26px;stroke:var(--muted);stroke-width:1.5;fill:none;margin:0 auto 7px}
+.upload-z p{font-size:12px;color:var(--muted)}
+.upload-z span{font-size:11px;color:var(--blue2);font-weight:600}
+.frow{display:flex;gap:10px}
+.fg{margin-bottom:12px;flex:1}
+.flbl{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:4px}
+.finp{width:100%;border:1.5px solid var(--border);border-radius:9px;padding:11px 12px;font-size:13px;color:var(--navy);background:white;transition:border-color .15s}
+.finp:focus{border-color:var(--blue2)}
+.rrow{display:flex;gap:12px}
+.rl{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;cursor:pointer}
+.rl input{accent-color:var(--blue2);width:15px;height:15px}
+.btn-primary{width:100%;background:var(--blue2);color:white;border-radius:11px;padding:14px;font-size:14px;font-weight:700;margin-top:6px}
+.btn-wa-full{width:100%;background:var(--wa);color:white;border-radius:11px;padding:13px;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px}
+.btn-wa-full svg{width:17px;height:17px;fill:white}
+
+/* ══ REFER PAGE ══ */
+.refer-hero{background:var(--navy);padding:22px 16px 26px;text-align:center}
+.refer-hero h1{font-family:'Sora',sans-serif;font-size:21px;font-weight:800;color:white;margin-bottom:5px}
+.refer-amt{font-family:'Sora',sans-serif;font-size:38px;font-weight:800;color:#60A5FA;margin-bottom:6px}
+.refer-hero p{color:rgba(255,255,255,.6);font-size:13px;max-width:280px;margin:0 auto}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;padding:14px 16px}
+.step{background:white;border-radius:11px;padding:13px 10px;text-align:center;box-shadow:0 1px 5px rgba(0,0,0,.07)}
+.step-ico{width:36px;height:36px;background:var(--bg);border-radius:9px;display:flex;align-items:center;justify-content:center;margin:0 auto 8px}
+.step-ico svg{width:17px;height:17px;stroke:var(--blue2);stroke-width:2;fill:none}
+.step h4{font-family:'Sora',sans-serif;font-size:11px;font-weight:700;margin-bottom:3px}
+.step p{font-size:10px;color:var(--muted);line-height:1.5}
+.refer-body{padding:0 16px 16px}
+.ref-t{font-family:'Sora',sans-serif;font-size:16px;font-weight:700;margin-bottom:4px}
+.ref-s{font-size:12px;color:var(--muted);margin-bottom:11px}
+.ref-link-row{display:flex;gap:8px;margin-bottom:13px}
+.ref-inp{flex:1;border:1.5px solid var(--border);border-radius:9px;padding:11px 12px;font-size:11px;color:var(--muted);background:white;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.btn-cp{background:var(--blue2);color:white;border-radius:9px;padding:11px 15px;font-size:13px;font-weight:700;white-space:nowrap}
+.ref-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:13px}
+.ref-stat{background:white;border-radius:11px;padding:15px;box-shadow:0 1px 5px rgba(0,0,0,.07)}
+.ref-stat label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:4px}
+.ref-stat .v{font-family:'Sora',sans-serif;font-size:20px;font-weight:800}
+
+/* ══════════════════════════════════
+   ADMIN PANEL
+══════════════════════════════════ */
+.admin-overlay{position:fixed;inset:0;z-index:9000;background:var(--navy);display:none;flex-direction:column}
+.admin-overlay.show{display:flex}
+
+/* SETUP SCREEN */
+.setup-screen{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;text-align:center}
+.setup-logo{width:60px;height:60px;background:var(--blue2);border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.setup-logo svg{width:32px;height:32px;fill:white}
+.setup-screen h2{font-family:'Sora',sans-serif;font-size:22px;font-weight:800;color:white;margin-bottom:8px}
+.setup-screen p{color:rgba(255,255,255,.6);font-size:13px;line-height:1.6;margin-bottom:24px}
+.setup-fields{width:100%;max-width:340px;display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.setup-label{font-size:10px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.07em;display:block;margin-bottom:4px;text-align:left}
+.setup-input{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.15);border-radius:10px;padding:13px 14px;font-size:13px;color:white}
+.setup-input::placeholder{color:rgba(255,255,255,.3)}
+.setup-input:focus{border-color:var(--blue2)}
+.btn-setup{width:100%;background:var(--blue2);color:white;border-radius:11px;padding:15px;font-size:15px;font-weight:700;max-width:340px}
+.setup-skip{color:rgba(255,255,255,.4);font-size:12px;margin-top:12px;cursor:pointer}
+.setup-note{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:12px 14px;width:100%;max-width:340px;margin-bottom:20px;text-align:left}
+.setup-note p{font-size:11px;color:rgba(255,255,255,.5);line-height:1.6}
+.setup-note a{color:#60A5FA}
+.conn-status{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:8px 14px;border-radius:20px;margin-bottom:16px}
+.conn-status.connected{background:rgba(22,163,74,.2);color:#4ADE80}
+.conn-status.disconnected{background:rgba(220,38,38,.15);color:#F87171}
+.conn-status .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+
+/* LOGIN SCREEN */
+.login-screen{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;text-align:center}
+.login-screen h2{font-family:'Sora',sans-serif;font-size:22px;font-weight:800;color:white;margin-bottom:6px}
+.login-screen p{color:rgba(255,255,255,.5);font-size:13px;margin-bottom:24px}
+.login-form{width:100%;max-width:340px;display:flex;flex-direction:column;gap:10px}
+.login-error{background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.3);border-radius:9px;padding:10px 14px;color:#FCA5A5;font-size:12px;display:none}
+.btn-login{background:var(--blue2);color:white;border-radius:11px;padding:14px;font-size:15px;font-weight:700;width:100%;margin-top:4px}
+.login-back{color:rgba(255,255,255,.4);font-size:12px;margin-top:16px;cursor:pointer;display:flex;align-items:center;gap:5px;justify-content:center}
+.login-back svg{width:14px;height:14px;stroke:rgba(255,255,255,.4);stroke-width:2;fill:none}
+
+/* ADMIN DASHBOARD */
+.admin-dashboard{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.admin-hdr{background:var(--navy2);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08)}
+.admin-hdr-left{display:flex;align-items:center;gap:10px}
+.admin-hdr-left h2{font-family:'Sora',sans-serif;font-size:15px;font-weight:800;color:white}
+.admin-hdr-left span{font-size:11px;color:rgba(255,255,255,.4)}
+.admin-logout{display:flex;align-items:center;gap:5px;background:rgba(220,38,38,.15);color:#FCA5A5;border-radius:8px;padding:7px 11px;font-size:11px;font-weight:700}
+.admin-logout svg{width:13px;height:13px;stroke:#FCA5A5;stroke-width:2;fill:none}
+.admin-tabs{display:flex;background:rgba(255,255,255,.05);margin:0;border-bottom:1px solid rgba(255,255,255,.08)}
+.admin-tab{flex:1;padding:11px 8px;font-size:11px;font-weight:700;color:rgba(255,255,255,.4);text-align:center;border-bottom:2px solid transparent;transition:all .15s}
+.admin-tab.active{color:var(--blue2);border-bottom-color:var(--blue2)}
+.admin-scroll{flex:1;overflow-y:auto;scrollbar-width:none}
+.admin-scroll::-webkit-scrollbar{display:none}
+
+/* Admin stats */
+.admin-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px 16px}
+.astat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px}
+.astat-label{font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px}
+.astat-val{font-family:'Sora',sans-serif;font-size:22px;font-weight:800;color:white}
+.astat-sub{font-size:11px;color:rgba(255,255,255,.35);margin-top:3px}
+
+/* Car list admin */
+.admin-cars{padding:0 16px 16px}
+.admin-cars-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;padding-top:14px}
+.admin-cars-head h3{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:white}
+.btn-add-car{display:flex;align-items:center;gap:5px;background:var(--blue2);color:white;border-radius:9px;padding:8px 13px;font-size:12px;font-weight:700}
+.btn-add-car svg{width:14px;height:14px;stroke:white;stroke-width:2.5;fill:none}
+.admin-car-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px;margin-bottom:9px;display:flex;align-items:center;gap:12px}
+.acc-img{width:60px;height:46px;border-radius:8px;overflow:hidden;background:rgba(255,255,255,.08);flex-shrink:0}
+.acc-img img{width:100%;height:100%;object-fit:cover}
+.acc-info{flex:1;min-width:0}
+.acc-name{font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:white;margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.acc-price{font-size:11px;color:#60A5FA;font-weight:600;margin-bottom:2px}
+.acc-loc{font-size:10px;color:rgba(255,255,255,.4)}
+.acc-actions{display:flex;gap:6px;flex-shrink:0}
+.btn-edit{width:30px;height:30px;background:rgba(37,99,235,.2);border-radius:7px;display:flex;align-items:center;justify-content:center}
+.btn-edit svg{width:13px;height:13px;stroke:#60A5FA;stroke-width:2;fill:none}
+.btn-del{width:30px;height:30px;background:rgba(220,38,38,.15);border-radius:7px;display:flex;align-items:center;justify-content:center}
+.btn-del svg{width:13px;height:13px;stroke:#FCA5A5;stroke-width:2;fill:none}
+
+/* ADD CAR FORM */
+.add-car-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.7);display:none;align-items:flex-end}
+.add-car-overlay.show{display:flex}
+.add-car-sheet{background:var(--navy2);border-radius:20px 20px 0 0;padding:20px 18px 30px;width:100%;max-height:90vh;overflow-y:auto;max-width:480px;margin:0 auto}
+.sheet-handle{width:36px;height:4px;background:rgba(255,255,255,.2);border-radius:2px;margin:0 auto 18px}
+.sheet-title{font-family:'Sora',sans-serif;font-size:17px;font-weight:800;color:white;margin-bottom:16px}
+.sfg{margin-bottom:12px}
+.sflbl{font-size:10px;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:4px}
+.sfinp{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:9px;padding:11px 13px;font-size:13px;color:white;transition:border-color .15s}
+.sfinp::placeholder{color:rgba(255,255,255,.25)}
+.sfinp:focus{border-color:var(--blue2)}
+.sfrow{display:flex;gap:10px}
+.sfrow .sfg{flex:1}
+.sftextarea{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:9px;padding:11px 13px;font-size:13px;color:white;min-height:80px;resize:none;font-family:'DM Sans',sans-serif}
+.sftextarea:focus{border-color:var(--blue2)}
+.sftextarea::placeholder{color:rgba(255,255,255,.25)}
+.img-url-preview{width:100%;height:90px;border-radius:9px;overflow:hidden;margin-top:8px;background:rgba(255,255,255,.05);display:none}
+.img-url-preview img{width:100%;height:100%;object-fit:cover}
+.sheet-btns{display:flex;gap:10px;margin-top:16px}
+.btn-cancel{flex:1;background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);border-radius:10px;padding:13px;font-size:14px;font-weight:700;border:1px solid rgba(255,255,255,.1)}
+.btn-save{flex:2;background:var(--blue2);color:white;border-radius:10px;padding:13px;font-size:14px;font-weight:700}
+.save-loading{display:none;align-items:center;gap:8px;color:rgba(255,255,255,.6);font-size:13px;margin-top:10px;justify-content:center}
+
+/* ── TOAST ── */
+.toast{position:absolute;bottom:76px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--navy);color:white;padding:9px 20px;border-radius:20px;font-size:12px;font-weight:600;opacity:0;pointer-events:none;transition:all .25s;white-space:nowrap;z-index:9999}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.admin-toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--navy2);border:1px solid rgba(255,255,255,.1);color:white;padding:10px 22px;border-radius:20px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:all .25s;white-space:nowrap;z-index:99999}
+.admin-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* WA FAB */
+.wa-fab{position:absolute;bottom:76px;right:14px;z-index:50;width:46px;height:46px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,.45)}
+.wa-fab svg{width:24px;height:24px;fill:white}
+
+/* DRAWER */
+.drawer{position:fixed;inset:0;z-index:8000;display:flex;pointer-events:none}
+.drawer.open{pointer-events:all}
+.drw-bg{position:absolute;inset:0;background:rgba(0,0,0,.5);opacity:0;transition:opacity .3s}
+.drawer.open .drw-bg{opacity:1}
+.drw-panel{position:absolute;right:0;top:0;bottom:0;width:74%;max-width:280px;background:white;transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;padding:18px 16px}
+.drawer.open .drw-panel{transform:translateX(0)}
+.drw-close{align-self:flex-end;width:28px;height:28px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.drw-close svg{width:13px;height:13px;stroke:var(--navy);stroke-width:2.5;fill:none}
+.drw-links{display:flex;flex-direction:column;gap:2px}
+.drw-link{display:flex;align-items:center;gap:10px;padding:12px 10px;border-radius:9px;font-size:14px;font-weight:600;color:var(--navy)}
+.drw-link svg{width:17px;height:17px;stroke:currentColor;stroke-width:2;fill:none}
+.drw-link.active{background:var(--bg);color:var(--blue2)}
+.drw-bottom{margin-top:auto;display:flex;flex-direction:column;gap:9px}
+.drw-wa-btn{width:100%;background:var(--wa);color:white;border-radius:10px;padding:12px;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px}
+.drw-wa-btn svg{width:16px;height:16px;fill:white}
+.drw-admin-btn{width:100%;background:var(--navy);color:white;border-radius:10px;padding:12px;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px}
+.drw-admin-btn svg{width:16px;height:16px;stroke:white;stroke-width:2;fill:none}
+
+/* empty state */
+.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;color:rgba(255,255,255,.3);text-align:center;gap:10px}
+.empty-state svg{width:40px;height:40px;stroke:currentColor;stroke-width:1.5;fill:none}
+.empty-state p{font-size:13px}
+
+/* anim */
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.page.active>*{animation:fadeUp .22s ease both}
+
+/* select styling */
+select.sfinp{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='none' stroke='rgba(255,255,255,.4)' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
+select.sfinp option{background:#1a2e55;color:white}
+</style>
+</head>
+<body>
+
+<div class="shell" id="shell">
+
+  <!-- ═══ HEADER ═══ -->
+  <div class="hdr">
+    <div class="hdr-top">
+      <div class="logo" onclick="go('home')">
+        <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M5 11l1.5-4.5h11L19 11M3 11l1 5h16l1-5M5 11h14M8 16v2M16 16v2"/></svg></div>
+        <div><div class="logo-name">IskilAutos</div><div class="logo-sub">Premium Dealer</div></div>
+      </div>
+      <div class="hdr-actions">
+        <button class="hdr-wa" onclick="toast_('Opening WhatsApp 💬')">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51A3.9 3.9 0 0011.432 2c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat
+        </button>
+        <button class="hdr-admin-btn" onclick="openAdmin()">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          Login
+        </button>
+        <button class="hdr-menu" onclick="openDrawer()">
+          <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="hdr-search">
+      <div class="search-box">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" placeholder="Search make, model, year…" id="srch" oninput="liveSearch(this.value)">
+      </div>
+      <button class="hdr-filter-btn" onclick="go('buy')">
+        <svg viewBox="0 0 24 24"><path d="M22 3H2l8 9.46V19l4 2v-8.54z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══ SCROLL ═══ -->
+  <div class="scroll" id="scroller">
+
+    <!-- ════ HOME ════ -->
+    <div class="page active" id="pg-home">
+      <div class="trust">
+        <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Verified Cars</div>
+        <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Affordable Delivery</div>
+        <div class="trust-item"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>300+ Cars</div>
+      </div>
+      <div class="banner">
+        <h1>Find Your <em>Dream Car</em> in Nigeria</h1>
+        <p>Premium verified vehicles. Nationwide delivery. Upgrade, sell or trade today.</p>
+        <div class="banner-btns">
+          <button class="btn-bp" onclick="go('buy')">Browse Cars</button>
+          <button class="btn-bs" onclick="go('sell')">Sell My Car</button>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-head">
+          <div class="sec-title">Shop by Brand</div>
+          <button class="sec-link" onclick="go('buy')">See all</button>
+        </div>
+        <div class="cat-row" id="catRow">
+          <div class="cat active" onclick="catFilter(this,'all')">
+            <div class="cat-ico" style="padding:8px"><svg width="34" height="26" viewBox="0 0 34 26" fill="none"><path d="M4 12l2-6h22l2 6M4 12H2l1 6h28l1-6H30M4 12h26M9 18v2M25 18v2" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div class="cat-lbl">All</div>
+          </div>
+          <div class="cat" onclick="catFilter(this,'toyota')">
+            <div class="cat-ico"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/200px-Toyota_carlogo.svg.png" alt="Toyota" onerror="this.style.display='none'"></div>
+            <div class="cat-lbl">Toyota</div>
+          </div>
+          <div class="cat" onclick="catFilter(this,'mercedes')">
+            <div class="cat-ico"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Mercedes-Logo.svg/200px-Mercedes-Logo.svg.png" alt="Benz" onerror="this.style.display='none'"></div>
+            <div class="cat-lbl">Mercedes</div>
+          </div>
+          <div class="cat" onclick="catFilter(this,'lexus')">
+            <div class="cat-ico"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Lexus_division_emblem.svg/200px-Lexus_division_emblem.svg.png" alt="Lexus" onerror="this.style.display='none'"></div>
+            <div class="cat-lbl">Lexus</div>
+          </div>
+          <div class="cat" onclick="catFilter(this,'bmw')">
+            <div class="cat-ico"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/BMW.svg/200px-BMW.svg.png" alt="BMW" onerror="this.style.display='none'"></div>
+            <div class="cat-lbl">BMW</div>
+          </div>
+          <div class="cat" onclick="catFilter(this,'honda')">
+            <div class="cat-ico"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Honda.svg/200px-Honda.svg.png" alt="Honda" onerror="this.style.display='none'"></div>
+            <div class="cat-lbl">Honda</div>
+          </div>
+        </div>
+      </div>
+      <div class="chips" id="homeChips">
+        <button class="chip on" onclick="homeChip(this,'all')">All Cars</button>
+        <button class="chip" onclick="homeChip(this,'suv')">SUV</button>
+        <button class="chip" onclick="homeChip(this,'sedan')">Sedan</button>
+        <button class="chip" onclick="homeChip(this,'pickup')">Pickup</button>
+        <button class="chip" onclick="homeChip(this,'luxury')">Luxury</button>
+        <button class="chip" onclick="homeChip(this,'new')">New</button>
+      </div>
+      <div class="sec">
+        <div class="sec-head">
+          <div class="sec-title">All Listings</div>
+          <button class="sec-link" onclick="go('buy')">View all</button>
+        </div>
+        <div class="car-grid" id="homeGrid">
+          <div class="spinner"><div class="spin"></div><span style="font-size:12px;color:var(--muted)">Loading cars…</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ BUY ════ -->
+    <div class="page" id="pg-buy">
+      <div class="filter-bar" id="buyFilterBar">
+        <button class="fchip on" onclick="buyChip(this,'all')">All</button>
+        <button class="fchip" onclick="buyChip(this,'toyota')">Toyota</button>
+        <button class="fchip" onclick="buyChip(this,'mercedes')">Mercedes</button>
+        <button class="fchip" onclick="buyChip(this,'lexus')">Lexus</button>
+        <button class="fchip" onclick="buyChip(this,'suv')">SUV</button>
+        <button class="fchip" onclick="buyChip(this,'sedan')">Sedan</button>
+        <button class="fchip" onclick="buyChip(this,'under20m')">Under ₦20M</button>
+      </div>
+      <div class="rbar">
+        <div class="rcount" id="rcount">Loading…</div>
+      </div>
+      <div style="padding:6px 16px 16px">
+        <div class="car-grid" id="buyGrid">
+          <div class="spinner" style="grid-column:1/-1"><div class="spin"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ DETAIL ════ -->
+    <div class="page" id="pg-detail">
+      <button class="det-back" onclick="go('buy')">
+        <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to Listings
+      </button>
+      <div class="det-gal">
+        <img class="det-main" id="dmain" src="" alt="" onerror="this.src='https://placehold.co/800x400/1a2e55/60A5FA?text=No+Image'">
+        <div class="det-glabel">Virtual Tour</div>
+        <div class="det-gcnt" id="dgcnt">1/1</div>
+      </div>
+      <div class="det-thumbs" id="dthumbs"></div>
+      <div class="det-info">
+        <div class="dtags" id="dtags"></div>
+        <div class="dtitle" id="dtitle"></div>
+        <div class="dprice" id="dprice"></div>
+        <div class="dspecs" id="dspecs"></div>
+      </div>
+      <div class="det-cta">
+        <button class="btn-wa" onclick="toast_('Opening WhatsApp 💬')">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51A3.9 3.9 0 0011.432 2c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp About This Car
+        </button>
+        <button class="btn-call">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          Call: 08149106635
+        </button>
+      </div>
+      <div class="det-desc">
+        <div class="det-dtitle">About This Car</div>
+        <div class="det-dtext" id="ddesc"></div>
+        <button class="det-dmore" onclick="toggleDesc()">Read more ↓</button>
+        <div class="feats-grid" id="dfeats"></div>
+      </div>
+      <div style="height:14px"></div>
+    </div>
+
+    <!-- ════ SELL ════ -->
+    <div class="page" id="pg-sell">
+      <div class="sell-hero"><h1>Sell or Swap Your Car</h1><p>3 quick fields. We call you back within the hour.</p></div>
+      <div class="sell-body">
+        <div class="wa-hint"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51A3.9 3.9 0 0011.432 2c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><p><strong>Prefer WhatsApp?</strong> Send car photos directly — we'll value it in minutes.</p></div>
+        <div class="upload-z"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><p>Tap to upload exterior photo</p><span>Clear shot preferred</span></div>
+        <div class="fg"><label class="flbl">Car Name / Model</label><input class="finp" placeholder="e.g. Toyota Camry 2018"></div>
+        <div class="frow"><div class="fg"><label class="flbl">Mileage (km)</label><input class="finp" type="number" placeholder="45000"></div><div class="fg" style="max-width:110px"><label class="flbl">Year</label><input class="finp" type="number" placeholder="2018"></div></div>
+        <div class="fg"><label class="flbl">Request Type</label><div class="rrow"><label class="rl"><input type="radio" name="rt" checked> Sell</label><label class="rl"><input type="radio" name="rt"> Swap</label></div></div>
+        <div class="fg" style="margin-top:8px"><label class="flbl">WhatsApp Number</label><input class="finp" type="tel" placeholder="08012345678"></div>
+        <button class="btn-primary" onclick="toast_('Submitted! We\'ll call you shortly 📞')">Submit — We'll Call You Back</button>
+        <button class="btn-wa-full" onclick="toast_('Opening WhatsApp 💬')"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51A3.9 3.9 0 0011.432 2c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp Us Directly</button>
+      </div>
+    </div>
+
+    <!-- ════ REFER ════ -->
+    <div class="page" id="pg-refer">
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100%;padding:48px 24px;text-align:center;background:var(--bg)">
+        <!-- Icon -->
+        <div style="width:80px;height:80px;background:var(--navy);border-radius:24px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 8px 32px rgba(11,29,62,.18)">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <!-- Badge -->
+        <div style="background:#EFF6FF;color:var(--blue2);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:16px">Coming Soon</div>
+        <h2 style="font-family:'Sora',sans-serif;font-size:24px;font-weight:800;color:var(--navy);margin-bottom:10px;line-height:1.25">Refer &amp; Earn<br>is on its way</h2>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;max-width:260px;margin-bottom:28px">Earn <strong style="color:var(--navy)">Naira</strong> for every friend who buys a car through your link. We're building this feature now — stay tuned.</p>
+        <!-- Teaser cards -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;width:100%;max-width:340px;margin-bottom:32px">
+          <div style="background:white;border-radius:12px;padding:14px 8px;text-align:center;box-shadow:0 1px 6px rgba(0,0,0,.07)">
+            <div style="font-family:'Sora',sans-serif;font-size:18px;font-weight:800;color:var(--blue2);margin-bottom:4px">₦</div>
+            <div style="font-size:10px;color:var(--muted);font-weight:600">Per referral</div>
+          </div>
+          <div style="background:white;border-radius:12px;padding:14px 8px;text-align:center;box-shadow:0 1px 6px rgba(0,0,0,.07)">
+            <div style="font-family:'Sora',sans-serif;font-size:18px;font-weight:800;color:var(--green);margin-bottom:4px">Fast</div>
+            <div style="font-size:10px;color:var(--muted);font-weight:600">Instant payout</div>
+          </div>
+          <div style="background:white;border-radius:12px;padding:14px 8px;text-align:center;box-shadow:0 1px 6px rgba(0,0,0,.07)">
+            <div style="font-family:'Sora',sans-serif;font-size:18px;font-weight:800;color:var(--navy);margin-bottom:4px">∞</div>
+            <div style="font-size:10px;color:var(--muted);font-weight:600">No limit</div>
+          </div>
+        </div>
+        <!-- Notify CTA -->
+        <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Want to be notified when it launches?</p>
+        <button class="btn-wa-full" style="max-width:320px;margin-top:0" onclick="toast_('Opening WhatsApp 💬')">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51A3.9 3.9 0 0011.432 2c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Notify Me on WhatsApp
+        </button>
+      </div>
+    </div>
+
+  </div><!-- /scroll -->
+
+  <!-- ═══ BOTTOM NAV ═══ -->
+  <nav class="bnav">
+    <button class="bitem active" id="bn-home" onclick="go('home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></button>
+    <button class="bitem" id="bn-buy" onclick="go('buy')"><svg viewBox="0 0 24 24"><path d="M5 11l1.5-4.5h11L19 11M3 11l1 5h16l1-5M5 11h14M8 16v2M16 16v2"/></svg><span>Buy Cars</span></button>
+    <button class="bitem" id="bn-sell" onclick="go('sell')"><svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg><span>Sell</span></button>
+    <button class="bitem" id="bn-refer" onclick="go('refer')"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg><span>Refer</span></button>
+  </nav>
+
+  <button class="wa-fab" onclick="toast_('Opening WhatsApp 💬')"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51A3.9 3.9 0 0011.432 2c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></button>
+  <div class="toast" id="toast"></div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     ADMIN PANEL (full screen overlay)
+═══════════════════════════════════════ -->
+<div class="admin-overlay" id="adminOverlay">
+
+  <!-- 1. SETUP SCREEN -->
+  <div id="setupScreen" style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;max-width:480px;margin:0 auto;width:100%;scrollbar-width:none">
+    <div style="padding:28px 22px 40px;display:flex;flex-direction:column;align-items:center;text-align:center;min-height:100%">
+
+      <!-- Logo + title -->
+      <div class="setup-logo"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
+      <h2 style="font-family:'Sora',sans-serif;font-size:22px;font-weight:800;color:white;margin-bottom:6px">Admin Login</h2>
+      <p style="color:rgba(255,255,255,.55);font-size:13px;line-height:1.6;margin-bottom:18px">Enter your Supabase credentials to connect and manage your inventory.</p>
+
+      <!-- Status pill -->
+      <div id="connStatus" class="conn-status disconnected" style="margin-bottom:18px"><div class="dot"></div><span id="connText">Not Connected</span></div>
+
+      <!-- ★ INPUT FIELDS FIRST ★ -->
+      <div style="width:100%;max-width:340px;display:flex;flex-direction:column;gap:11px;margin-bottom:16px">
+        <div style="text-align:left">
+          <label class="setup-label">Supabase Project URL</label>
+          <input class="setup-input" id="sbUrl" placeholder="https://xxxx.supabase.co" type="url" autocomplete="off">
+        </div>
+        <div style="text-align:left">
+          <label class="setup-label">Supabase Anon Key</label>
+          <input class="setup-input" id="sbKey" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6Ikp..." type="password" autocomplete="off">
+        </div>
+        <div style="text-align:left">
+          <label class="setup-label">Admin Email</label>
+          <input class="setup-input" id="sbEmail" placeholder="admin@iskilautos.com" type="email" autocomplete="email">
+        </div>
+        <div style="text-align:left">
+          <label class="setup-label">Admin Password</label>
+          <input class="setup-input" id="sbPass" placeholder="••••••••" type="password" autocomplete="current-password">
+        </div>
+      </div>
+
+      <button class="btn-setup" onclick="connectSupabase()" style="width:100%;max-width:340px;margin-bottom:10px">Connect &amp; Sign In</button>
+      <div style="color:rgba(255,255,255,.35);font-size:12px;margin-bottom:24px;cursor:pointer" onclick="closeAdmin()">← Back to app</div>
+
+      <!-- SQL reference — collapsed by default -->
+      <div style="width:100%;max-width:340px;text-align:left">
+        <button onclick="toggleSQL()" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:11px 14px;color:rgba(255,255,255,.6);font-size:12px;font-weight:600;display:flex;justify-content:space-between;align-items:center;margin-bottom:0" id="sqlToggleBtn">
+          <span>📋 View SQL to create cars table</span>
+          <span id="sqlArrow">▼</span>
+        </button>
+        <div id="sqlBlock" style="display:none;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.1);border-top:none;border-radius:0 0 10px 10px;padding:14px">
+          <p style="font-size:10px;color:rgba(255,255,255,.4);margin-bottom:8px">Run this in Supabase → SQL Editor → New Query:</p>
+          <code id="sqlCode" style="color:#93C5FD;font-size:10px;line-height:1.8;display:block;word-break:break-all;white-space:pre-wrap">CREATE TABLE cars (
+  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+  name text NOT NULL,
+  year text,
+  price text,
+  brand text,
+  type text,
+  status text DEFAULT 'used',
+  mileage text,
+  transmission text,
+  fuel text,
+  location text,
+  description text,
+  features text,
+  image_url text,
+  images text,
+  created_at timestamptz DEFAULT now()
+);
+
+ALTER TABLE cars ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Public read" ON cars
+  FOR SELECT USING (true);
+
+CREATE POLICY "Auth write" ON cars
+  FOR ALL USING (auth.role() = 'authenticated');</code>
+          <button onclick="copySQL()" style="margin-top:10px;width:100%;background:var(--blue2);color:white;border-radius:8px;padding:9px;font-size:12px;font-weight:700">Copy SQL</button>
+        </div>
+      </div>
+
+      <p style="color:rgba(255,255,255,.25);font-size:11px;margin-top:20px">Get your URL &amp; Key from <a href="https://supabase.com" target="_blank" style="color:#60A5FA">supabase.com</a> → Settings → API</p>
+    </div>
+  </div>
+
+  <!-- 2. ADMIN DASHBOARD -->
+  <div id="adminDashboard" style="display:none;flex:1;flex-direction:column;max-width:480px;margin:0 auto;width:100%">
+    <div class="admin-dashboard">
+      <div class="admin-hdr">
+        <div class="admin-hdr-left">
+          <h2>Admin Panel</h2>
+          <span id="adminUserEmail"></span>
+        </div>
+        <button class="admin-logout" onclick="adminLogout()">
+          <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+          Logout
+        </button>
+      </div>
+      <div class="admin-tabs">
+        <button class="admin-tab active" onclick="adminTab(this,'inventory')">Inventory</button>
+        <button class="admin-tab" onclick="adminTab(this,'analytics')">Analytics</button>
+        <button class="admin-tab" onclick="adminTab(this,'settings')">Settings</button>
+      </div>
+      <div class="admin-scroll">
+
+        <!-- Inventory Tab -->
+        <div id="tab-inventory">
+          <div class="admin-stats">
+            <div class="astat"><div class="astat-label">Total Cars</div><div class="astat-val" id="statTotal">—</div><div class="astat-sub">In inventory</div></div>
+            <div class="astat"><div class="astat-label">New Cars</div><div class="astat-val" id="statNew">—</div><div class="astat-sub">Brand new stock</div></div>
+            <div class="astat"><div class="astat-label">Used Cars</div><div class="astat-val" id="statUsed">—</div><div class="astat-sub">Pre-owned</div></div>
+            <div class="astat"><div class="astat-label">Brands</div><div class="astat-val" id="statBrands">—</div><div class="astat-sub">Unique makes</div></div>
+          </div>
+          <div class="admin-cars">
+            <div class="admin-cars-head">
+              <h3>All Vehicles</h3>
+              <button class="btn-add-car" onclick="openAddCar()">
+                <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Add Car
+              </button>
+            </div>
+            <div id="adminCarList"><div class="spinner"><div class="spin"></div></div></div>
+          </div>
+        </div>
+
+        <!-- Analytics Tab -->
+        <div id="tab-analytics" style="display:none;padding:16px">
+          <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:20px;text-align:center;color:rgba(255,255,255,.4)">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin:0 auto 10px"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+            <p style="font-size:13px">Analytics coming soon.<br>Connect more cars to see stats.</p>
+          </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div id="tab-settings" style="display:none;padding:16px">
+          <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px;margin-bottom:12px">
+            <div style="font-size:12px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Connected Project</div>
+            <div style="font-size:13px;color:#60A5FA;word-break:break-all" id="settingsUrl">—</div>
+          </div>
+          <button style="width:100%;background:rgba(220,38,38,.15);color:#FCA5A5;border:1px solid rgba(220,38,38,.2);border-radius:10px;padding:13px;font-size:13px;font-weight:700;" onclick="disconnectSupabase()">Disconnect Supabase</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="admin-toast" id="adminToast"></div>
+</div>
+
+<!-- ADD/EDIT CAR SHEET -->
+<div class="add-car-overlay" id="addCarOverlay">
+  <div class="add-car-sheet" id="addCarSheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title" id="sheetTitle">Add New Car</div>
+    <div class="sfg"><label class="sflbl">Car Name / Model *</label><input class="sfinp" id="f_name" placeholder="e.g. Mercedes-Benz GLE 43 AMG"></div>
+    <div class="sfrow">
+      <div class="sfg"><label class="sflbl">Year *</label><input class="sfinp" id="f_year" placeholder="2022" type="number"></div>
+      <div class="sfg"><label class="sflbl">Price *</label><input class="sfinp" id="f_price" placeholder="₦52,000,000"></div>
+    </div>
+    <div class="sfrow">
+      <div class="sfg"><label class="sflbl">Brand</label>
+        <select class="sfinp" id="f_brand">
+          <option value="">Select</option>
+          <option>Toyota</option><option>Mercedes</option><option>Lexus</option>
+          <option>BMW</option><option>Honda</option><option>Ford</option>
+          <option>Hyundai</option><option>Kia</option><option>Nissan</option><option>Other</option>
+        </select>
+      </div>
+      <div class="sfg"><label class="sflbl">Type</label>
+        <select class="sfinp" id="f_type">
+          <option value="">Select</option>
+          <option>SUV</option><option>Sedan</option><option>Pickup</option>
+          <option>Luxury</option><option>Hatchback</option><option>Coupe</option>
+        </select>
+      </div>
+    </div>
+    <div class="sfrow">
+      <div class="sfg"><label class="sflbl">Status</label>
+        <select class="sfinp" id="f_status"><option value="used">Used</option><option value="new">New</option></select>
+      </div>
+      <div class="sfg"><label class="sflbl">Mileage</label><input class="sfinp" id="f_mileage" placeholder="48,500 km"></div>
+    </div>
+    <div class="sfrow">
+      <div class="sfg"><label class="sflbl">Transmission</label>
+        <select class="sfinp" id="f_trans"><option>Automatic</option><option>Manual</option></select>
+      </div>
+      <div class="sfg"><label class="sflbl">Fuel</label>
+        <select class="sfinp" id="f_fuel"><option>Gasoline</option><option>Diesel</option><option>Hybrid</option><option>Electric</option></select>
+      </div>
+    </div>
+    <div class="sfg"><label class="sflbl">Location</label><input class="sfinp" id="f_location" placeholder="Lekki, Lagos"></div>
+    <div class="sfg">
+      <label class="sflbl">Main Image URL *</label>
+      <input class="sfinp" id="f_image" placeholder="https://..." oninput="previewImg(this.value)">
+      <div class="img-url-preview" id="imgPreview"><img id="imgPreviewImg" src="" alt=""></div>
+    </div>
+    <div class="sfg"><label class="sflbl">Extra Images (comma-separated URLs)</label><textarea class="sftextarea" id="f_images" placeholder="https://img1.jpg, https://img2.jpg"></textarea></div>
+    <div class="sfg"><label class="sflbl">Description</label><textarea class="sftextarea" id="f_desc" placeholder="Describe the car condition, history, features…"></textarea></div>
+    <div class="sfg"><label class="sflbl">Key Features (comma-separated)</label><input class="sfinp" id="f_features" placeholder="Sunroof, Leather Seats, 360 Camera"></div>
+    <div class="sheet-btns">
+      <button class="btn-cancel" onclick="closeAddCar()">Cancel</button>
+      <button class="btn-save" onclick="saveCar()" id="saveBtn">Save Car</button>
+    </div>
+    <div class="save-loading" id="saveLoading"><div class="spin" style="width:20px;height:20px;border-width:2px"></div> Saving…</div>
+  </div>
+</div>
+
+<!-- DRAWER -->
+<div class="drawer" id="drawer">
+  <div class="drw-bg" onclick="closeDrawer()"></div>
+  <div class="drw-panel">
+    <button class="drw-close" onclick="closeDrawer()"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <div class="drw-links">
+      <a class="drw-link active" onclick="go('home');closeDrawer()"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a>
+      <a class="drw-link" onclick="go('buy');closeDrawer()"><svg viewBox="0 0 24 24"><path d="M5 11l1.5-4.5h11L19 11M3 11l1 5h16l1-5M5 11h14M8 16v2M16 16v2"/></svg>Buy Cars</a>
+      <a class="drw-link" onclick="go('sell');closeDrawer()"><svg viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>Sell & Swap</a>
+      <a class="drw-link" onclick="go('refer');closeDrawer()"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Refer & Earn</a>
+    </div>
+    <div class="drw-bottom">
+      <button class="drw-wa-btn" onclick="toast_('Opening WhatsApp 💬');closeDrawer()"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51A3.9 3.9 0 0011.432 2c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp Us</button>
+      <button class="drw-admin-btn" onclick="openAdmin();closeDrawer()"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>Admin Panel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════
+   SUPABASE + STATE
+══════════════════════════════════════ */
+let sb = null;
+let ALL_CARS = [];
+let editingId = null;
+
+const DEMO_CARS = [
+  {id:'demo-1',name:'Mercedes-Benz GLE 43 AMG Coupe',year:'2018',price:'₦52,000,000',brand:'Mercedes',type:'SUV',status:'used',mileage:'48,500 km',transmission:'Automatic',fuel:'Gasoline',location:'Lekki, Lagos',description:'Clean 2018 Mercedes-Benz GLE 43 AMG Coupe. V6 Biturbo engine, perfectly maintained. Lagos cleared with full customs duty. Premium black leather interior and high-performance AMG styling.',features:'V6 Biturbo,AMG Exhaust,Airmatic Suspension,Panoramic Roof,Harman Kardon,360° Camera',image_url:'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=600&q=80',images:'https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=800&q=80,https://images.unsplash.com/photo-1523983388277-336a66bf9bcd?w=800&q=80'},
+  {id:'demo-2',name:'Toyota Camry XLE',year:'2021',price:'₦32,000,000',brand:'Toyota',type:'Sedan',status:'used',mileage:'12,000 km',transmission:'Automatic',fuel:'Gasoline',location:'Victoria Island',description:'Excellent 2021 Toyota Camry XLE. Single ownership, full service history. Leather seats, reverse camera, Apple CarPlay. Customs cleared, ready to drive.',features:'Apple CarPlay,Leather Seats,Reverse Cam,Dual Zone AC,Keyless Entry,Push Start',image_url:'https://images.unsplash.com/photo-1583267746897-2cf415887172?w=600&q=80',images:'https://images.unsplash.com/photo-1583267746897-2cf415887172?w=800&q=80'},
+  {id:'demo-3',name:'Toyota Hilux Adventure',year:'2023',price:'₦85,000,000',brand:'Toyota',type:'Pickup',status:'new',mileage:'0 km',transmission:'Automatic',fuel:'Diesel',location:'Abuja, FCT',description:'Brand new 2023 Toyota Hilux Adventure. Zero km, direct from Toyota Nigeria. Full factory warranty.',features:'Zero KM,Factory Warranty,4WD System,Tonneau Cover,Bed Liner,LED Lights',image_url:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80',images:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80'},
+  {id:'demo-4',name:'Lexus RX 350',year:'2022',price:'₦48,000,000',brand:'Lexus',type:'SUV',status:'used',mileage:'15,000 km',transmission:'Automatic',fuel:'Gasoline',location:'Ikeja, Lagos',description:'2022 Lexus RX 350 in excellent condition. Full leather interior, panoramic sunroof, Mark Levinson sound system.',features:'Mark Levinson,Panoramic Roof,Adaptive Cruise,Lane Assist,Heated Seats,Wireless CarPlay',image_url:'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=80',images:'https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80'},
+  {id:'demo-5',name:'Mercedes-Benz C300',year:'2020',price:'₦28,500,000',brand:'Mercedes',type:'Luxury',status:'used',mileage:'32,000 km',transmission:'Automatic',fuel:'Gasoline',location:'GRA, Port Harcourt',description:'2020 Mercedes-Benz C300. Turbocharged engine, MBUX infotainment, ambient lighting.',features:'MBUX Display,Ambient Lighting,Burmester Audio,Wireless Charge,Park Assist,LED Headlights',image_url:'https://images.unsplash.com/photo-1606016159991-dfe4f2746ad5?w=600&q=80',images:'https://images.unsplash.com/photo-1606016159991-dfe4f2746ad5?w=800&q=80'},
+  {id:'demo-6',name:'Lexus ES 350',year:'2019',price:'₦26,000,000',brand:'Lexus',type:'Sedan',status:'used',mileage:'38,000 km',transmission:'Automatic',fuel:'Gasoline',location:'Lekki Phase 1',description:'2019 Lexus ES 350 with low mileage. Smooth V6 engine, full leather seats, large touchscreen.',features:'V6 Engine,Full Leather,Touchscreen Nav,Ventilated Seats,Blind Spot Monitor,Pre-Collision',image_url:'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=600&q=80',images:'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=800&q=80'},
+  {id:'demo-7',name:'Toyota Corolla Cross',year:'2022',price:'₦22,000,000',brand:'Toyota',type:'SUV',status:'used',mileage:'8,000 km',transmission:'Automatic',fuel:'Gasoline',location:'Wuse, Abuja',description:'2022 Toyota Corolla Cross. Almost new, very low mileage. Ideal family SUV.',features:'Low Mileage,Apple CarPlay,Rear Camera,Dual AC,Safety Sense,LED DRLs',image_url:'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600&q=80',images:'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&q=80'},
+  {id:'demo-8',name:'Mercedes-Benz GLA 200',year:'2021',price:'₦38,000,000',brand:'Mercedes',type:'SUV',status:'used',mileage:'22,000 km',transmission:'Automatic',fuel:'Gasoline',location:'Banana Island, Lagos',description:'2021 Mercedes-Benz GLA 200. Compact luxury SUV, turbocharged engine, MBUX with large screen.',features:'MBUX 10.25",Turbocharged,Sport Seats,Keyless Go,Reversing Camera,LED Headlights',image_url:'https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=600&q=80',images:'https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=800&q=80'},
+  {id:'demo-9',name:'Lexus LX 600',year:'2023',price:'₦145,000,000',brand:'Lexus',type:'Luxury',status:'used',mileage:'5,000 km',transmission:'Automatic',fuel:'Gasoline',location:'Asokoro, Abuja',description:'2023 Lexus LX 600. Nigeria\'s most premium SUV. Twin-turbo V6, 7-seat configuration.',features:'Twin-Turbo V6,7 Seats,E-KDSS,Mark Levinson 25sp,Multi-terrain,Night Vision',image_url:'https://images.unsplash.com/photo-1619976215249-ed4e1ade5d52?w=600&q=80',images:'https://images.unsplash.com/photo-1619976215249-ed4e1ade5d52?w=800&q=80'},
+];
+
+/* ══ INIT ══ */
+window.addEventListener("load", async ()=>{
+  const saved = localStorage.getItem("sb_config");
+  if(saved){
+    try{
+      const {url,key} = JSON.parse(saved);
+      if(url && key){
+        sb = supabase.createClient(url, key);
+        const {data:{session}} = await sb.auth.getSession();
+        if(session){
+          document.getElementById("adminUserEmail").textContent = session.user.email;
+          document.getElementById("settingsUrl").textContent = url;
+          document.getElementById("sbUrl").value = url;
+          if(document.getElementById("adminOverlay").classList.contains("show")){
+            showAdminDashboard();
+          }
+        }
+        loadCarsFromSupabase();
+        return;
+      }
+    }catch(e){}
+  }
+  loadDemoCars();
+});
+
+function loadDemoCars(){
+  ALL_CARS = DEMO_CARS;
+  renderAll(ALL_CARS);
+}
+
+function initSupabase(url, key){
+  try{
+    sb = supabase.createClient(url, key);
+    loadCarsFromSupabase();
+  }catch(e){
+    loadDemoCars();
+  }
+}
+
+async function loadCarsFromSupabase(){
+  if(!sb){ loadDemoCars(); return; }
+  try{
+    const {data,error} = await sb.from('cars').select('*').order('created_at',{ascending:false});
+    if(error || !data || data.length===0){
+      ALL_CARS = DEMO_CARS;
+    } else {
+      ALL_CARS = data;
+    }
+    renderAll(ALL_CARS);
+  }catch(e){
+    ALL_CARS = DEMO_CARS;
+    renderAll(ALL_CARS);
+  }
+}
+
+/* ══ RENDER ══ */
+function renderAll(cars){
+  renderGrid(document.getElementById('homeGrid'), cars);
+  renderGrid(document.getElementById('buyGrid'), cars);
+  document.getElementById('rcount').textContent = cars.length + ' Vehicle' + (cars.length!==1?'s':'');
+}
+
+function carImgHTML(c){
+  const url = c.image_url || '';
+  if(url){
+    return `<img src="${url}" alt="${c.name}" loading="lazy" onerror="this.onerror=null;this.parentElement.innerHTML='<div class=\\'placeholder\\'><svg viewBox=\\'0 0 24 24\\'><path d=\\'M5 11l1.5-4.5h11L19 11M3 11l1 5h16l1-5M5 11h14M8 16v2M16 16v2\\' stroke=\\'%239CA3AF\\' stroke-width=\\'1.5\\' fill=\\'none\\'/></svg></div>'">`;
+  }
+  return `<div class="placeholder"><svg viewBox="0 0 24 24" fill="none"><path d="M5 11l1.5-4.5h11L19 11M3 11l1 5h16l1-5M5 11h14M8 16v2M16 16v2" stroke="#9CA3AF" stroke-width="1.5"/></svg></div>`;
+}
+
+function smallCard(c){
+  const bs = c.status==='new'?'badge-n':'badge-u';
+  const bt = c.status==='new'?'NEW':'USED';
+  return `<div class="cgcard" onclick="openDetail('${c.id}')">
+    <div class="cgcard-img">
+      ${carImgHTML(c)}
+      <span class="cgbadge ${bs}">${bt}</span>
+      <button class="cgfav" onclick="favCar(event)"><svg viewBox="0 0 24 24" fill="none"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></button>
+    </div>
+    <div class="cgcard-body">
+      <div class="cgyr">${c.year||''}</div>
+      <div class="cgname">${c.name}</div>
+      <div class="cgprice">${c.price}</div>
+      <div class="cgloc"><svg viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>${(c.location||'').split(',')[0]}</div>
+    </div>
+  </div>`;
+}
+
+function renderGrid(el, cars){
+  if(!el) return;
+  if(!cars.length){
+    el.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><svg viewBox="0 0 24 24"><path d="M5 11l1.5-4.5h11L19 11M3 11l1 5h16l1-5M5 11h14M8 16v2M16 16v2"/></svg><p>No cars found</p></div>`;
+    return;
+  }
+  el.innerHTML = cars.map(c=>smallCard(c)).join('');
+}
+
+/* ══ NAVIGATION ══ */
+function go(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.bitem').forEach(b=>b.classList.remove('active'));
+  const pg = document.getElementById('pg-'+page);
+  if(pg) pg.classList.add('active');
+  const bn = document.getElementById('bn-'+page);
+  if(bn) bn.classList.add('active');
+  document.getElementById('scroller').scrollTop = 0;
+}
+
+/* ══ DETAIL ══ */
+function openDetail(id){
+  const c = ALL_CARS.find(x=>String(x.id)===String(id));
+  if(!c) return;
+  const imgs = c.images ? c.images.split(',').map(s=>s.trim()).filter(Boolean) : [];
+  if(c.image_url && !imgs.includes(c.image_url)) imgs.unshift(c.image_url);
+  const mainImg = imgs[0] || 'https://placehold.co/800x400/1a2e55/60A5FA?text=No+Image';
+  document.getElementById('dmain').src = mainImg;
+  document.getElementById('dgcnt').textContent = '1/' + (imgs.length||1);
+  document.getElementById('dtitle').textContent = (c.year?c.year+' ':'')+c.name;
+  document.getElementById('dprice').textContent = c.price;
+  document.getElementById('dtags').innerHTML = `<span class="dtag ${c.status==='new'?'dtag-n':'dtag-u'}">${(c.status||'USED').toUpperCase()}</span><span class="dtag dtag-d">Nationwide Delivery</span>`;
+  document.getElementById('dspecs').innerHTML = [
+    ['Mileage',c.mileage],['Location',c.location],
+    ['Body Type',c.type],['Transmission',c.transmission],['Fuel',c.fuel]
+  ].filter(r=>r[1]).map(r=>`<div class="ds"><span class="dsl">${r[0]}</span><span class="dsr">${r[1]}</span></div>`).join('');
+  document.getElementById('ddesc').textContent = c.description || '';
+  document.getElementById('ddesc').classList.remove('open');
+  document.querySelector('.det-dmore').textContent = 'Read more ↓';
+  const feats = c.features ? c.features.split(',').map(s=>s.trim()).filter(Boolean) : [];
+  document.getElementById('dfeats').innerHTML = feats.map(f=>`<div class="feat-item"><svg viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12"/></svg><span>${f}</span></div>`).join('');
+  const tb = document.getElementById('dthumbs');
+  tb.innerHTML = imgs.map((img,i)=>`<div class="det-thumb${i===0?' on':''}" onclick="setThumb(this,'${img}',${i+1},${imgs.length})"><img src="${img}" loading="lazy" onerror="this.src='https://placehold.co/120x90/1a2e55/60A5FA?text=Img'"></div>`).join('');
+  go('detail');
+}
+
+function setThumb(el,src,n,tot){
+  document.querySelectorAll('.det-thumb').forEach(t=>t.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById('dmain').src=src;
+  document.getElementById('dgcnt').textContent=n+'/'+tot;
+}
+function toggleDesc(){
+  const d=document.getElementById('ddesc'),b=document.querySelector('.det-dmore');
+  d.classList.toggle('open');
+  b.textContent=d.classList.contains('open')?'Show less ↑':'Read more ↓';
+}
+
+/* ══ FILTERS ══ */
+function catFilter(el,val){
+  document.querySelectorAll('.cat').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  go('buy');
+  applyBuyFilter(val);
+}
+function homeChip(el,val){
+  document.querySelectorAll('#homeChips .chip').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');
+  let f = val==='all'?ALL_CARS:val==='new'?ALL_CARS.filter(c=>c.status==='new'):ALL_CARS.filter(c=>(c.type||'').toLowerCase()===val);
+  renderGrid(document.getElementById('homeGrid'),f);
+}
+function buyChip(el,val){
+  document.querySelectorAll('#buyFilterBar .fchip').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');
+  applyBuyFilter(val);
+}
+function applyBuyFilter(val){
+  let res;
+  if(val==='all') res=ALL_CARS;
+  else if(val==='under20m') res=ALL_CARS.filter(c=>parseInt((c.price||'').replace(/[^\d]/g,''))<20000000);
+  else res=ALL_CARS.filter(c=>(c.brand||'').toLowerCase()===val.toLowerCase()||(c.type||'').toLowerCase()===val.toLowerCase()||(c.name||'').toLowerCase().includes(val.toLowerCase()));
+  renderGrid(document.getElementById('buyGrid'),res);
+  document.getElementById('rcount').textContent=res.length+' Vehicle'+(res.length!==1?'s':'');
+}
+function liveSearch(v){
+  if(!v.trim()){renderGrid(document.getElementById('buyGrid'),ALL_CARS);document.getElementById('rcount').textContent=ALL_CARS.length+' Vehicles';return;}
+  go('buy');
+  const q=v.toLowerCase();
+  const res=ALL_CARS.filter(c=>(c.name||'').toLowerCase().includes(q)||(c.brand||'').toLowerCase().includes(q)||(c.type||'').toLowerCase().includes(q)||(c.year||'').includes(q)||(c.location||'').toLowerCase().includes(q));
+  renderGrid(document.getElementById('buyGrid'),res);
+  document.getElementById('rcount').textContent=res.length+' Result'+(res.length!==1?'s':'');
+}
+
+/* ══════════════════════════
+   ADMIN PANEL
+══════════════════════════ */
+function openAdmin(){
+  document.getElementById("adminOverlay").classList.add("show");
+  const saved = localStorage.getItem("sb_config");
+  if(saved){
+    try{
+      const {url} = JSON.parse(saved);
+      document.getElementById("sbUrl").value = url||"";
+      document.getElementById("settingsUrl").textContent = url||"—";
+    }catch(e){}
+  }
+  if(sb){
+    sb.auth.getSession().then(({data:{session}})=>{
+      if(session){
+        document.getElementById("adminUserEmail").textContent = session.user.email;
+        showAdminDashboard();
+      }
+    });
+  }
+}
+function closeAdmin(){ document.getElementById('adminOverlay').classList.remove('show'); }
+
+async function connectSupabase(){
+  const url = document.getElementById('sbUrl').value.trim();
+  const key = document.getElementById('sbKey').value.trim();
+  const email = document.getElementById('sbEmail').value.trim();
+  const pass = document.getElementById('sbPass').value.trim();
+  if(!url||!key){ aToast('Please enter Supabase URL and Key'); return; }
+  if(!email||!pass){ aToast('Please enter admin email and password'); return; }
+  try{
+    sb = supabase.createClient(url, key);
+    const {data,error} = await sb.auth.signInWithPassword({email,password:pass});
+    if(error){ aToast('Login failed: '+error.message); sb=null; return; }
+    localStorage.setItem('sb_config', JSON.stringify({url,key}));
+    document.getElementById('connStatus').className='conn-status connected';
+    document.getElementById('connText').textContent='Connected';
+    document.getElementById('adminUserEmail').textContent=data.user.email;
+    document.getElementById('settingsUrl').textContent=url;
+    showAdminDashboard();
+    loadAdminCars();
+    loadCarsFromSupabase();
+    aToast('Connected! Logged in as '+data.user.email);
+  }catch(e){ aToast('Connection error: '+e.message); }
+}
+
+async function adminLogout(){
+  if(sb) await sb.auth.signOut();
+  document.getElementById('setupScreen').style.display='flex';
+  document.getElementById('adminDashboard').style.display='none';
+  aToast('Logged out');
+}
+
+function disconnectSupabase(){
+  localStorage.removeItem('sb_config');
+  sb=null;
+  ALL_CARS=DEMO_CARS;
+  renderAll(ALL_CARS);
+  document.getElementById('setupScreen').style.display='flex';
+  document.getElementById('adminDashboard').style.display='none';
+  aToast('Disconnected. Showing demo data.');
+}
+
+function showAdminDashboard(){
+  document.getElementById('setupScreen').style.display='none';
+  document.getElementById('adminDashboard').style.display='flex';
+  loadAdminCars();
+}
+
+async function loadAdminCars(){
+  const el = document.getElementById('adminCarList');
+  el.innerHTML='<div class="spinner"><div class="spin"></div></div>';
+  let cars;
+  if(sb){
+    const {data,error}=await sb.from('cars').select('*').order('created_at',{ascending:false});
+    cars = (!error&&data) ? data : DEMO_CARS;
+  } else { cars = DEMO_CARS; }
+  // update stats
+  document.getElementById('statTotal').textContent=cars.length;
+  document.getElementById('statNew').textContent=cars.filter(c=>c.status==='new').length;
+  document.getElementById('statUsed').textContent=cars.filter(c=>c.status==='used').length;
+  document.getElementById('statBrands').textContent=[...new Set(cars.map(c=>c.brand).filter(Boolean))].length;
+  if(!cars.length){ el.innerHTML='<div class="empty-state"><svg viewBox="0 0 24 24"><path d="M5 11l1.5-4.5h11L19 11M3 11l1 5h16l1-5M5 11h14M8 16v2M16 16v2"/></svg><p>No cars yet. Add your first car!</p></div>'; return; }
+  el.innerHTML = cars.map(c=>`
+    <div class="admin-car-card">
+      <div class="acc-img"><img src="${c.image_url||''}" alt="${c.name}" onerror="this.src='https://placehold.co/120x90/1a2e55/60A5FA?text=Car'"></div>
+      <div class="acc-info">
+        <div class="acc-name">${(c.year?c.year+' ':'')+c.name}</div>
+        <div class="acc-price">${c.price||'—'}</div>
+        <div class="acc-loc">${c.location||'—'} · ${(c.status||'used').toUpperCase()}</div>
+      </div>
+      <div class="acc-actions">
+        <button class="btn-edit" onclick="editCar('${c.id}')"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+        <button class="btn-del" onclick="deleteCar('${c.id}')"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg></button>
+      </div>
+    </div>`).join('');
+}
+
+function adminTab(el,tab){
+  document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  ['inventory','analytics','settings'].forEach(t=>{ const el=document.getElementById('tab-'+t); if(el)el.style.display=t===tab?'block':'none'; });
+}
+
+/* ══ ADD/EDIT CAR ══ */
+function openAddCar(id=null){
+  editingId=id;
+  clearForm();
+  if(id){
+    const c=ALL_CARS.find(x=>String(x.id)===String(id))||[];
+    if(c){
+      document.getElementById('sheetTitle').textContent='Edit Car';
+      document.getElementById('f_name').value=c.name||'';
+      document.getElementById('f_year').value=c.year||'';
+      document.getElementById('f_price').value=c.price||'';
+      document.getElementById('f_brand').value=c.brand||'';
+      document.getElementById('f_type').value=c.type||'';
+      document.getElementById('f_status').value=c.status||'used';
+      document.getElementById('f_mileage').value=c.mileage||'';
+      document.getElementById('f_trans').value=c.transmission||'Automatic';
+      document.getElementById('f_fuel').value=c.fuel||'Gasoline';
+      document.getElementById('f_location').value=c.location||'';
+      document.getElementById('f_image').value=c.image_url||'';
+      document.getElementById('f_images').value=c.images||'';
+      document.getElementById('f_desc').value=c.description||'';
+      document.getElementById('f_features').value=c.features||'';
+      if(c.image_url) previewImg(c.image_url);
+    }
+  } else {
+    document.getElementById('sheetTitle').textContent='Add New Car';
+  }
+  document.getElementById('addCarOverlay').classList.add('show');
+}
+function editCar(id){ openAddCar(id); }
+function closeAddCar(){ document.getElementById('addCarOverlay').classList.remove('show'); editingId=null; clearForm(); }
+function clearForm(){
+  ['f_name','f_year','f_price','f_brand','f_type','f_mileage','f_location','f_image','f_images','f_desc','f_features'].forEach(id=>{ const el=document.getElementById(id); if(el)el.value=''; });
+  document.getElementById('f_status').value='used';
+  document.getElementById('f_trans').value='Automatic';
+  document.getElementById('f_fuel').value='Gasoline';
+  document.getElementById('imgPreview').style.display='none';
+}
+function previewImg(url){
+  const p=document.getElementById('imgPreview'),img=document.getElementById('imgPreviewImg');
+  if(url.startsWith('http')){p.style.display='block';img.src=url;}else{p.style.display='none';}
+}
+
+async function saveCar(){
+  const name=document.getElementById('f_name').value.trim();
+  const price=document.getElementById('f_price').value.trim();
+  if(!name||!price){ aToast('Name and Price are required'); return; }
+  const carData={
+    name, price,
+    year:document.getElementById('f_year').value.trim(),
+    brand:document.getElementById('f_brand').value,
+    type:document.getElementById('f_type').value,
+    status:document.getElementById('f_status').value,
+    mileage:document.getElementById('f_mileage').value.trim(),
+    transmission:document.getElementById('f_trans').value,
+    fuel:document.getElementById('f_fuel').value,
+    location:document.getElementById('f_location').value.trim(),
+    image_url:document.getElementById('f_image').value.trim(),
+    images:document.getElementById('f_images').value.trim(),
+    description:document.getElementById('f_desc').value.trim(),
+    features:document.getElementById('f_features').value.trim(),
+  };
+  document.getElementById('saveBtn').style.display='none';
+  document.getElementById('saveLoading').style.display='flex';
+  if(sb){
+    try{
+      let result;
+      if(editingId && !String(editingId).startsWith('demo-')){
+        result = await sb.from('cars').update(carData).eq('id',editingId);
+      } else {
+        result = await sb.from('cars').insert([carData]);
+      }
+      if(result.error){ aToast('Error: '+result.error.message); }
+      else{ aToast(editingId?'Car updated!':'Car added!'); closeAddCar(); loadAdminCars(); loadCarsFromSupabase(); }
+    }catch(e){ aToast('Error: '+e.message); }
+  } else {
+    // Demo mode — just add locally
+    const newCar = {...carData, id:'demo-'+Date.now()};
+    if(editingId){ ALL_CARS = ALL_CARS.map(c=>String(c.id)===String(editingId)?{...c,...carData}:c); }
+    else { ALL_CARS = [newCar,...ALL_CARS]; }
+    renderAll(ALL_CARS);
+    loadAdminCars();
+    aToast(editingId?'Updated (demo mode)':'Added (demo mode — connect Supabase to persist)');
+    closeAddCar();
+  }
+  document.getElementById('saveBtn').style.display='';
+  document.getElementById('saveLoading').style.display='none';
+}
+
+async function deleteCar(id){
+  if(!confirm('Delete this car?')) return;
+  if(sb && !String(id).startsWith('demo-')){
+    const {error}=await sb.from('cars').delete().eq('id',id);
+    if(error){ aToast('Error: '+error.message); return; }
+  }
+  ALL_CARS=ALL_CARS.filter(c=>String(c.id)!==String(id));
+  renderAll(ALL_CARS);
+  loadAdminCars();
+  aToast('Car deleted');
+}
+
+/* ══ UTILS ══ */
+function toggleSQL(){
+  const b = document.getElementById('sqlBlock');
+  const a = document.getElementById('sqlArrow');
+  const open = b.style.display==='block';
+  b.style.display = open?'none':'block';
+  a.textContent = open?'▼':'▲';
+}
+function copySQL(){
+  const sql = document.getElementById('sqlCode').textContent;
+  navigator.clipboard.writeText(sql).catch(()=>{});
+  aToast('SQL copied! Paste it in Supabase → SQL Editor 📋');
+}
+function favCar(e){ e.stopPropagation(); toast_('Added to favourites ❤️'); }
+function copyRef(){ navigator.clipboard.writeText(document.getElementById('refLink').value).catch(()=>{}); toast_('Link copied! 🎉'); }
+function openDrawer(){ document.getElementById('drawer').classList.add('open'); }
+function closeDrawer(){ document.getElementById('drawer').classList.remove('open'); }
+function toast_(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),2400);
+}
+function aToast(msg){
+  const t=document.getElementById('adminToast');
+  t.textContent=msg; t.classList.add('show');
+  clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),2800);
+}
+</script>
+</body>
+</html>
