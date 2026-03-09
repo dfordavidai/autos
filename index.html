@@ -4,7 +4,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>IskilAutos</title>
+<title>IskilAutos — Buy, Sell &amp; Swap Cars in Nigeria</title>
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMxRDRFRDgiLz48cGF0aCBkPSJNMTAgMzhsNC0xMmgzNmw0IDEyIiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik04IDM4bDEgOGg0NmwxLTgiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGNpcmNsZSBjeD0iMjAiIGN5PSI0NiIgcj0iNCIgZmlsbD0id2hpdGUiLz48Y2lyY2xlIGN4PSI0NCIgY3k9IjQ2IiByPSI0IiBmaWxsPSJ3aGl0ZSIvPjxwYXRoIGQ9Ik0xNCAzOGgzNiIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+">
+<link rel="shortcut icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMxRDRFRDgiLz48cGF0aCBkPSJNMTAgMzhsNC0xMmgzNmw0IDEyIiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik04IDM4bDEgOGg0NmwxLTgiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGNpcmNsZSBjeD0iMjAiIGN5PSI0NiIgcj0iNCIgZmlsbD0id2hpdGUiLz48Y2lyY2xlIGN4PSI0NCIgY3k9IjQ2IiByPSI0IiBmaWxsPSJ3aGl0ZSIvPjxwYXRoIGQ9Ik0xNCAzOGgzNiIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+">
+
+<!-- Apple Home Screen Icon -->
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxODAgMTgwIj48cmVjdCB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgcng9IjAiIGZpbGw9IiMwQjFEM0UiLz48cmVjdCB4PSIyMCIgeT0iMjAiIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIiByeD0iMzIiIGZpbGw9IiMxRDRFRDgiLz48cGF0aCBkPSJNNTIgMTA4bDEwLTMwaDU2bDEwIDMwIiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik00NiAxMDhsNSAyMGg3OGw1LTIwIiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxjaXJjbGUgY3g9IjcyIiBjeT0iMTI4IiByPSIxMCIgZmlsbD0id2hpdGUiLz48Y2lyY2xlIGN4PSIxMDgiIGN5PSIxMjgiIHI9IjEwIiBmaWxsPSJ3aGl0ZSIvPjxwYXRoIGQ9Ik01OCAxMDhoNjQiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iNSIvPjx0ZXh0IHg9IjkwIiB5PSIxNTgiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjayxzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjOTNDNUZEIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5Jc2tpbEF1dG9zPC90ZXh0Pjwvc3ZnPg==">
+<meta name="apple-mobile-web-app-title" content="IskilAutos">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0B1D3E">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiSXNraWxBdXRvcyIsInNob3J0X25hbWUiOiJJc2tpbEF1dG9zIiwiZGVzY3JpcHRpb24iOiJCdXksIFNlbGwgJiBTd2FwIENhcnMgaW4gTmlnZXJpYSIsInN0YXJ0X3VybCI6Ii4iLCJkaXNwbGF5Ijoic3RhbmRhbG9uZSIsImJhY2tncm91bmRfY29sb3IiOiIjMEIxRDNFIiwidGhlbWVfY29sb3IiOiIjMUQ0RUQ4In0=">
+
+<!-- SEO -->
+<meta name="description" content="Premium verified vehicles in Nigeria. Buy, sell or swap cars. Nationwide delivery.">
+
+<!-- Open Graph (bookmark preview / social sharing) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="IskilAutos — Buy, Sell &amp; Swap Cars">
+<meta property="og:description" content="Premium verified vehicles in Nigeria. Buy, sell or swap. Nationwide delivery.">
+<meta property="og:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCIgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMEIxRDNFIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMWEzMDYwIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+CjxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjYzMCIgZmlsbD0idXJsKCNnKSIvPgo8Y2lyY2xlIGN4PSIxMDAiIGN5PSIzMTUiIHI9IjIwMCIgZmlsbD0icmdiYSgyOSw3OCwyMTYsMC4wOCkiLz4KPGNpcmNsZSBjeD0iMTEwMCIgY3k9IjMxNSIgcj0iMjAwIiBmaWxsPSJyZ2JhKDI5LDc4LDIxNiwwLjA4KSIvPgo8cmVjdCB4PSI0NjAiIHk9IjE0MCIgd2lkdGg9IjI4MCIgaGVpZ2h0PSIyMjAiIHJ4PSI0NCIgZmlsbD0iIzFENEVEOCIvPgo8cGF0aCBkPSJNNTAwIDI4MmwxNi00OGgxNjhsMTYgNDgiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMTEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNNDkwIDI4Mmw3IDMyaDIxNmw3LTMyIiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjExIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGNpcmNsZSBjeD0iNTM1IiBjeT0iMzE0IiByPSIyMCIgZmlsbD0id2hpdGUiLz4KPGNpcmNsZSBjeD0iNjY1IiBjeT0iMzE0IiByPSIyMCIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTUxMCAyODJoMTgwIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjciLz4KPHRleHQgeD0iNjAwIiB5PSI0NTAiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjayxzYW5zLXNlcmlmIiBmb250LXNpemU9IjgwIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SXNraWxBdXRvczwvdGV4dD4KPHRleHQgeD0iNjAwIiB5PSI1MTUiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjM0IiBmaWxsPSIjOTNDNUZEIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5CdXkgIMK3ICBTZWxsICDCtyAgU3dhcCBDYXJzIGluIE5pZ2VyaWE8L3RleHQ+CjxyZWN0IHg9IjQ2MCIgeT0iNTQwIiB3aWR0aD0iOTMiIGhlaWdodD0iNCIgcng9IjIiIGZpbGw9IiMyNTYzRUIiLz4KPHJlY3QgeD0iNTYzIiB5PSI1NDAiIHdpZHRoPSI5MyIgaGVpZ2h0PSI0IiByeD0iMiIgZmlsbD0iIzI1NjNFQiIvPgo8cmVjdCB4PSI2NjYiIHk9IjU0MCIgd2lkdGg9Ijc0IiBoZWlnaHQ9IjQiIHJ4PSIyIiBmaWxsPSIjMjU2M0VCIi8+Cjwvc3ZnPg==">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="IskilAutos">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IskilAutos — Buy, Sell &amp; Swap Cars">
+<meta name="twitter:description" content="Premium verified vehicles in Nigeria.">
+<meta name="twitter:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCIgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIj4KPGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMEIxRDNFIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMWEzMDYwIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+CjxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjYzMCIgZmlsbD0idXJsKCNnKSIvPgo8Y2lyY2xlIGN4PSIxMDAiIGN5PSIzMTUiIHI9IjIwMCIgZmlsbD0icmdiYSgyOSw3OCwyMTYsMC4wOCkiLz4KPGNpcmNsZSBjeD0iMTEwMCIgY3k9IjMxNSIgcj0iMjAwIiBmaWxsPSJyZ2JhKDI5LDc4LDIxNiwwLjA4KSIvPgo8cmVjdCB4PSI0NjAiIHk9IjE0MCIgd2lkdGg9IjI4MCIgaGVpZ2h0PSIyMjAiIHJ4PSI0NCIgZmlsbD0iIzFENEVEOCIvPgo8cGF0aCBkPSJNNTAwIDI4MmwxNi00OGgxNjhsMTYgNDgiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMTEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8cGF0aCBkPSJNNDkwIDI4Mmw3IDMyaDIxNmw3LTMyIiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjExIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPGNpcmNsZSBjeD0iNTM1IiBjeT0iMzE0IiByPSIyMCIgZmlsbD0id2hpdGUiLz4KPGNpcmNsZSBjeD0iNjY1IiBjeT0iMzE0IiByPSIyMCIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTUxMCAyODJoMTgwIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjciLz4KPHRleHQgeD0iNjAwIiB5PSI0NTAiIGZvbnQtZmFtaWx5PSJBcmlhbCBCbGFjayxzYW5zLXNlcmlmIiBmb250LXNpemU9IjgwIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SXNraWxBdXRvczwvdGV4dD4KPHRleHQgeD0iNjAwIiB5PSI1MTUiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjM0IiBmaWxsPSIjOTNDNUZEIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5CdXkgIMK3ICBTZWxsICDCtyAgU3dhcCBDYXJzIGluIE5pZ2VyaWE8L3RleHQ+CjxyZWN0IHg9IjQ2MCIgeT0iNTQwIiB3aWR0aD0iOTMiIGhlaWdodD0iNCIgcng9IjIiIGZpbGw9IiMyNTYzRUIiLz4KPHJlY3QgeD0iNTYzIiB5PSI1NDAiIHdpZHRoPSI5MyIgaGVpZ2h0PSI0IiByeD0iMiIgZmlsbD0iIzI1NjNFQiIvPgo8cmVjdCB4PSI2NjYiIHk9IjU0MCIgd2lkdGg9Ijc0IiBoZWlnaHQ9IjQiIHJ4PSIyIiBmaWxsPSIjMjU2M0VCIi8+Cjwvc3ZnPg==">
+
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <!-- Supabase CDN -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -29,14 +61,14 @@ input,select,textarea{font-family:'DM Sans',sans-serif;outline:none}
   --orange:#EA580C;
 }
 
-/* ── SHELL ── */
+/* ---- */
 .shell{
   position:fixed;inset:0;display:flex;flex-direction:column;
   max-width:480px;margin:0 auto;background:var(--bg);
   box-shadow:0 0 60px rgba(0,0,0,.4);
 }
 
-/* ── HEADER ── */
+/* ---- */
 .hdr{flex-shrink:0;background:var(--navy);padding:12px 16px 10px;z-index:100}
 .hdr-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .logo{display:flex;align-items:center;gap:8px;cursor:pointer}
@@ -59,7 +91,7 @@ input,select,textarea{font-family:'DM Sans',sans-serif;outline:none}
 .hdr-filter-btn{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center}
 .hdr-filter-btn svg{width:15px;height:15px;stroke:white;stroke-width:2;fill:none}
 
-/* ── BOTTOM NAV ── */
+/* ---- */
 .bnav{flex-shrink:0;background:var(--white);border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr);padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -2px 12px rgba(0,0,0,.07);z-index:100}
 .bitem{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:9px 4px 7px;gap:3px;color:var(--muted);position:relative}
 .bitem.active{color:var(--blue2)}
@@ -67,20 +99,20 @@ input,select,textarea{font-family:'DM Sans',sans-serif;outline:none}
 .bitem svg{width:21px;height:21px;stroke:currentColor;stroke-width:2;fill:none}
 .bitem span{font-size:10px;font-weight:600}
 
-/* ── SCROLL ── */
+/* ---- */
 .scroll{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .scroll::-webkit-scrollbar{display:none}
 
-/* ── PAGES ── */
+/* ---- */
 .page{display:none}
 .page.active{display:block}
 
-/* ══ TRUST BAR ══ */
+/* ---- */
 .trust{background:var(--blue2);display:flex;justify-content:space-around;padding:8px 12px}
 .trust-item{display:flex;align-items:center;gap:5px;color:white;font-size:11px;font-weight:600}
 .trust-item svg{width:12px;height:12px;stroke:white;stroke-width:2.5;fill:none}
 
-/* ══ BANNER ══ */
+/* ---- */
 .banner{background:linear-gradient(135deg,var(--navy) 0%,#1a3060 100%);padding:20px 16px 22px;position:relative;overflow:hidden}
 .banner::before{content:'';position:absolute;right:-50px;bottom:-50px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(29,78,216,.3) 0%,transparent 70%)}
 .banner h1{font-family:'Sora',sans-serif;font-size:21px;font-weight:800;color:white;line-height:1.25;margin-bottom:6px}
@@ -90,13 +122,13 @@ input,select,textarea{font-family:'DM Sans',sans-serif;outline:none}
 .btn-bp{background:var(--blue2);color:white;border-radius:9px;padding:10px 16px;font-size:13px;font-weight:700}
 .btn-bs{background:rgba(255,255,255,.1);color:white;border-radius:9px;padding:10px 16px;font-size:13px;font-weight:700;border:1px solid rgba(255,255,255,.2)}
 
-/* ══ SECTION ══ */
+/* ---- */
 .sec{padding:14px 16px}
 .sec-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}
 .sec-title{font-family:'Sora',sans-serif;font-size:15px;font-weight:800;color:var(--navy)}
 .sec-link{color:var(--blue2);font-size:12px;font-weight:600}
 
-/* ══ BRANDS ══ */
+/* ---- */
 .cat-row{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
 .cat-row::-webkit-scrollbar{display:none}
 .cat{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer}
@@ -106,13 +138,13 @@ input,select,textarea{font-family:'DM Sans',sans-serif;outline:none}
 .cat-lbl{font-size:10px;font-weight:600;color:var(--muted)}
 .cat.active .cat-lbl{color:var(--blue2)}
 
-/* ══ CHIPS ══ */
+/* ---- */
 .chips{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding:0 16px 12px}
 .chips::-webkit-scrollbar{display:none}
 .chip{flex-shrink:0;border:1.5px solid var(--border);border-radius:18px;padding:6px 13px;font-size:12px;font-weight:600;color:var(--muted);background:white;white-space:nowrap}
 .chip.on{border-color:var(--blue2);color:var(--blue2);background:#EFF6FF}
 
-/* ══ 3-COL GRID ══ */
+/* ---- */
 .car-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
 .cgcard{background:white;border-radius:11px;overflow:hidden;cursor:pointer;box-shadow:0 1px 6px rgba(0,0,0,.08);transition:transform .15s;position:relative}
 .cgcard:active{transform:scale(.96)}
@@ -132,12 +164,12 @@ input,select,textarea{font-family:'DM Sans',sans-serif;outline:none}
 .cgloc{display:flex;align-items:center;gap:2px;font-size:9px;color:var(--muted)}
 .cgloc svg{width:9px;height:9px;stroke:var(--muted);stroke-width:2;fill:none}
 
-/* ══ LOADING SPINNER ══ */
+/* ---- */
 .spinner{display:flex;align-items:center;justify-content:center;padding:40px 0;color:var(--muted);flex-direction:column;gap:10px}
 .spin{width:28px;height:28px;border:3px solid var(--border);border-top-color:var(--blue2);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ══ BUY PAGE ══ */
+/* ---- */
 .filter-bar{background:white;border-bottom:1px solid var(--border);display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding:10px 16px}
 .filter-bar::-webkit-scrollbar{display:none}
 .fchip{flex-shrink:0;border:1.5px solid var(--border);border-radius:18px;padding:6px 12px;font-size:12px;font-weight:600;color:var(--muted);background:white;white-space:nowrap}
@@ -145,7 +177,7 @@ input,select,textarea{font-family:'DM Sans',sans-serif;outline:none}
 .rbar{display:flex;justify-content:space-between;align-items:center;padding:10px 16px 4px}
 .rcount{font-family:'Sora',sans-serif;font-size:14px;font-weight:700}
 
-/* ══ DETAIL ══ */
+/* ---- */
 .det-back{display:flex;align-items:center;gap:6px;color:var(--blue2);font-size:13px;font-weight:700;padding:12px 16px;background:white;border-bottom:1px solid var(--border)}
 .det-back svg{width:16px;height:16px;stroke:var(--blue2);stroke-width:2.5;fill:none}
 .det-gal{background:var(--navy);position:relative}
@@ -185,7 +217,7 @@ input,select,textarea{font-family:'DM Sans',sans-serif;outline:none}
 .feat-item svg{width:12px;height:12px;stroke:var(--green);stroke-width:2.5;fill:none;flex-shrink:0}
 .feat-item span{font-size:11px;font-weight:500}
 
-/* ══ SELL PAGE ══ */
+/* ---- */
 .sell-hero{background:var(--navy);padding:22px 16px 26px;text-align:center}
 .sell-hero h1{font-family:'Sora',sans-serif;font-size:21px;font-weight:800;color:white;margin-bottom:6px}
 .sell-hero p{color:rgba(255,255,255,.6);font-size:13px;line-height:1.6;max-width:280px;margin:0 auto}
@@ -209,7 +241,7 @@ input,select,textarea{font-family:'DM Sans',sans-serif;outline:none}
 .btn-wa-full{width:100%;background:var(--wa);color:white;border-radius:11px;padding:13px;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:8px}
 .btn-wa-full svg{width:17px;height:17px;fill:white}
 
-/* ══ REFER PAGE ══ */
+/* ---- */
 .refer-hero{background:var(--navy);padding:22px 16px 26px;text-align:center}
 .refer-hero h1{font-family:'Sora',sans-serif;font-size:21px;font-weight:800;color:white;margin-bottom:5px}
 .refer-amt{font-family:'Sora',sans-serif;font-size:38px;font-weight:800;color:#60A5FA;margin-bottom:6px}
@@ -231,9 +263,9 @@ input,select,textarea{font-family:'DM Sans',sans-serif;outline:none}
 .ref-stat label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:4px}
 .ref-stat .v{font-family:'Sora',sans-serif;font-size:20px;font-weight:800}
 
-/* ══════════════════════════════════
+/* 
    ADMIN PANEL
-══════════════════════════════════ */
+ */
 .admin-overlay{position:fixed;inset:0;z-index:9000;background:var(--navy);display:none;flex-direction:column}
 .admin-overlay.show{display:flex}
 
@@ -331,7 +363,7 @@ input,select,textarea{font-family:'DM Sans',sans-serif;outline:none}
 .btn-save{flex:2;background:var(--blue2);color:white;border-radius:10px;padding:13px;font-size:14px;font-weight:700}
 .save-loading{display:none;align-items:center;gap:8px;color:rgba(255,255,255,.6);font-size:13px;margin-top:10px;justify-content:center}
 
-/* ── TOAST ── */
+/* ---- */
 .toast{position:absolute;bottom:76px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--navy);color:white;padding:9px 20px;border-radius:20px;font-size:12px;font-weight:600;opacity:0;pointer-events:none;transition:all .25s;white-space:nowrap;z-index:9999}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .admin-toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--navy2);border:1px solid rgba(255,255,255,.1);color:white;padding:10px 22px;border-radius:20px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:all .25s;white-space:nowrap;z-index:99999}
@@ -372,13 +404,27 @@ input,select,textarea{font-family:'DM Sans',sans-serif;outline:none}
 /* select styling */
 select.sfinp{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='none' stroke='rgba(255,255,255,.4)' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
 select.sfinp option{background:#1a2e55;color:white}
+
+/* ---- */
+.stoggle{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,.15);border-radius:24px;transition:.3s}
+.stoggle:before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:white;border-radius:50%;transition:.3s}
+input:checked+.stoggle{background:var(--blue2)}
+input:checked+.stoggle:before{transform:translateX(18px)}
+
+/* ---- */
+#lockScreen{position:fixed;inset:0;z-index:99999;background:#0B1D3E;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px}
+#lockScreen.show{display:flex}
+#lockScreen svg{width:48px;height:48px;stroke:#EF4444;stroke-width:1.5;fill:none;margin-bottom:16px}
+#lockScreen h2{font-family:'Sora',sans-serif;color:white;font-size:22px;font-weight:800;margin-bottom:8px}
+#lockScreen p{color:rgba(255,255,255,.5);font-size:13px;line-height:1.6;margin-bottom:20px}
+#lockCountdown{font-family:'Sora',sans-serif;font-size:36px;font-weight:800;color:#EF4444}
 </style>
 </head>
 <body>
 
 <div class="shell" id="shell">
 
-  <!-- ═══ HEADER ═══ -->
+  <!--  HEADER  -->
   <div class="hdr">
     <div class="hdr-top">
       <div class="logo" onclick="go('home')">
@@ -386,7 +432,7 @@ select.sfinp option{background:#1a2e55;color:white}
         <div><div class="logo-name">IskilAutos</div><div class="logo-sub">Premium Dealer</div></div>
       </div>
       <div class="hdr-actions">
-        <button class="hdr-wa" onclick="toast_('Opening WhatsApp 💬')">
+        <button class="hdr-wa" onclick="window.open('https://wa.me/2348149106635','_blank')">
           <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51A3.9 3.9 0 0011.432 2c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Chat
         </button>
@@ -410,10 +456,10 @@ select.sfinp option{background:#1a2e55;color:white}
     </div>
   </div>
 
-  <!-- ═══ SCROLL ═══ -->
+  <!--  SCROLL  -->
   <div class="scroll" id="scroller">
 
-    <!-- ════ HOME ════ -->
+    <!--  HOME  -->
     <div class="page active" id="pg-home">
       <div class="trust">
         <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Verified Cars</div>
@@ -447,7 +493,7 @@ select.sfinp option{background:#1a2e55;color:white}
             <div class="cat-lbl">Mercedes</div>
           </div>
           <div class="cat" onclick="catFilter(this,'lexus')">
-            <div class="cat-ico"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Lexus_division_emblem.svg/200px-Lexus_division_emblem.svg.png" alt="Lexus" onerror="this.style.display='none'"></div>
+            <div class="cat-ico"><img src="https://www.carlogos.org/car-logos/lexus-logo.png" alt="Lexus" onerror="this.style.display='none'"></div>
             <div class="cat-lbl">Lexus</div>
           </div>
           <div class="cat" onclick="catFilter(this,'bmw')">
@@ -479,7 +525,7 @@ select.sfinp option{background:#1a2e55;color:white}
       </div>
     </div>
 
-    <!-- ════ BUY ════ -->
+    <!--  BUY  -->
     <div class="page" id="pg-buy">
       <div class="filter-bar" id="buyFilterBar">
         <button class="fchip on" onclick="buyChip(this,'all')">All</button>
@@ -500,7 +546,7 @@ select.sfinp option{background:#1a2e55;color:white}
       </div>
     </div>
 
-    <!-- ════ DETAIL ════ -->
+    <!--  DETAIL  -->
     <div class="page" id="pg-detail">
       <button class="det-back" onclick="go('buy')">
         <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to Listings
@@ -518,7 +564,7 @@ select.sfinp option{background:#1a2e55;color:white}
         <div class="dspecs" id="dspecs"></div>
       </div>
       <div class="det-cta">
-        <button class="btn-wa" onclick="toast_('Opening WhatsApp 💬')">
+        <button class="btn-wa" onclick="waAboutCar()">
           <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51A3.9 3.9 0 0011.432 2c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           WhatsApp About This Car
         </button>
@@ -536,7 +582,7 @@ select.sfinp option{background:#1a2e55;color:white}
       <div style="height:14px"></div>
     </div>
 
-    <!-- ════ SELL ════ -->
+    <!--  SELL  -->
     <div class="page" id="pg-sell">
       <div class="sell-hero"><h1>Sell or Swap Your Car</h1><p>3 quick fields. We call you back within the hour.</p></div>
       <div class="sell-body">
@@ -547,11 +593,11 @@ select.sfinp option{background:#1a2e55;color:white}
         <div class="fg"><label class="flbl">Request Type</label><div class="rrow"><label class="rl"><input type="radio" name="rt" checked> Sell</label><label class="rl"><input type="radio" name="rt"> Swap</label></div></div>
         <div class="fg" style="margin-top:8px"><label class="flbl">WhatsApp Number</label><input class="finp" type="tel" placeholder="08012345678"></div>
         <button class="btn-primary" onclick="toast_('Submitted! We\'ll call you shortly 📞')">Submit — We'll Call You Back</button>
-        <button class="btn-wa-full" onclick="toast_('Opening WhatsApp 💬')"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51A3.9 3.9 0 0011.432 2c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp Us Directly</button>
+        <button class="btn-wa-full" onclick="window.open('https://wa.me/2348149106635','_blank')"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51A3.9 3.9 0 0011.432 2c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp Us Directly</button>
       </div>
     </div>
 
-    <!-- ════ REFER ════ -->
+    <!--  REFER  -->
     <div class="page" id="pg-refer">
       <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100%;padding:48px 24px;text-align:center;background:var(--bg)">
         <!-- Icon -->
@@ -579,7 +625,7 @@ select.sfinp option{background:#1a2e55;color:white}
         </div>
         <!-- Notify CTA -->
         <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Want to be notified when it launches?</p>
-        <button class="btn-wa-full" style="max-width:320px;margin-top:0" onclick="toast_('Opening WhatsApp 💬')">
+        <button class="btn-wa-full" style="max-width:320px;margin-top:0" onclick="window.open('https://wa.me/2348149106635','_blank')">
           <svg viewBox="0 0 24 24" width="17" height="17" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51A3.9 3.9 0 0011.432 2c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Notify Me on WhatsApp
         </button>
@@ -588,7 +634,7 @@ select.sfinp option{background:#1a2e55;color:white}
 
   </div><!-- /scroll -->
 
-  <!-- ═══ BOTTOM NAV ═══ -->
+  <!--  BOTTOM NAV  -->
   <nav class="bnav">
     <button class="bitem active" id="bn-home" onclick="go('home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></button>
     <button class="bitem" id="bn-buy" onclick="go('buy')"><svg viewBox="0 0 24 24"><path d="M5 11l1.5-4.5h11L19 11M3 11l1 5h16l1-5M5 11h14M8 16v2M16 16v2"/></svg><span>Buy Cars</span></button>
@@ -596,23 +642,23 @@ select.sfinp option{background:#1a2e55;color:white}
     <button class="bitem" id="bn-refer" onclick="go('refer')"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg><span>Refer</span></button>
   </nav>
 
-  <button class="wa-fab" onclick="toast_('Opening WhatsApp 💬')"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51A3.9 3.9 0 0011.432 2c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></button>
+  <button class="wa-fab" onclick="window.open('https://wa.me/2348149106635','_blank')"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51A3.9 3.9 0 0011.432 2c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></button>
   <div class="toast" id="toast"></div>
 </div>
 
-<!-- ═══════════════════════════════════════
+<!-- 
      ADMIN PANEL (full screen overlay)
-═══════════════════════════════════════ -->
+ -->
 <div class="admin-overlay" id="adminOverlay">
 
   <!-- 1. SETUP SCREEN -->
-  <div id="setupScreen" style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;max-width:480px;margin:0 auto;width:100%;scrollbar-width:none">
+  <div id="setupScreen" style="display:flex;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;max-width:480px;margin:0 auto;width:100%;scrollbar-width:none;flex-direction:column">
     <div style="padding:28px 22px 40px;display:flex;flex-direction:column;align-items:center;text-align:center;min-height:100%">
 
       <!-- Logo + title -->
       <div class="setup-logo"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
       <h2 style="font-family:'Sora',sans-serif;font-size:22px;font-weight:800;color:white;margin-bottom:6px">Admin Login</h2>
-      <p style="color:rgba(255,255,255,.55);font-size:13px;line-height:1.6;margin-bottom:18px">Enter your password to access the admin dashboard.</p>
+      <p style="color:rgba(255,255,255,.55);font-size:13px;line-height:1.6;margin-bottom:18px">Enter your username and password to access the admin dashboard.</p>
 
       <!-- Status pill -->
       <div id="connStatus" class="conn-status disconnected" style="margin-bottom:18px"><div class="dot"></div><span id="connText">Not Connected</span></div>
@@ -622,8 +668,8 @@ select.sfinp option{background:#1a2e55;color:white}
         <input id="sbUrl" type="hidden" value="https://ibygazkyxxikntlubrsl.supabase.co">
         <input id="sbKey" type="hidden" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlieWdhemt5eHhpa250bHVicnNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwNTk5OTQsImV4cCI6MjA4ODYzNTk5NH0.PFyUuMvGM-GktXoM5Oqlsw3CYFxzbYgSKVAk86ThNuQ">
         <div style="text-align:left">
-          <label class="setup-label">Email</label>
-          <input class="setup-input" id="sbEmail" placeholder="iskilautos@gmail.com" type="email" autocomplete="email" value="iskilautos@gmail.com">
+          <label class="setup-label">Username</label>
+          <input class="setup-input" id="sbEmail" placeholder="Enter username" type="text" autocomplete="username">
         </div>
         <div style="text-align:left">
           <label class="setup-label">Password</label>
@@ -631,7 +677,7 @@ select.sfinp option{background:#1a2e55;color:white}
         </div>
       </div>
 
-      <button class="btn-setup" onclick="connectSupabase()" style="width:100%;max-width:340px;margin-bottom:10px">Connect &amp; Sign In</button>
+      <button class="btn-setup" onclick="connectSupabase()" style="width:100%;max-width:340px;margin-bottom:10px">Login</button>
       <div style="color:rgba(255,255,255,.35);font-size:12px;margin-bottom:24px;cursor:pointer" onclick="closeAdmin()">← Back to app</div>
 
       <!-- SQL reference — hidden -->
@@ -666,8 +712,21 @@ ALTER TABLE cars ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "Public read" ON cars
   FOR SELECT USING (true);
 
-CREATE POLICY "Auth write" ON cars
-  FOR ALL USING (auth.role() = 'authenticated');</code>
+CREATE POLICY "Anon write" ON cars
+  FOR ALL USING (true) WITH CHECK (true);
+
+-- Storage bucket for car images
+INSERT INTO storage.buckets (id, name, public) VALUES ('car-images', 'car-images', true)
+ON CONFLICT DO NOTHING;
+
+CREATE POLICY "Public read images" ON storage.objects
+  FOR SELECT USING (bucket_id = 'car-images');
+
+CREATE POLICY "Anon upload images" ON storage.objects
+  FOR INSERT WITH CHECK (bucket_id = 'car-images');
+
+CREATE POLICY "Anon delete images" ON storage.objects
+  FOR DELETE USING (bucket_id = 'car-images');</code>
           <button onclick="copySQL()" style="margin-top:10px;width:100%;background:var(--blue2);color:white;border-radius:8px;padding:9px;font-size:12px;font-weight:700">Copy SQL</button>
         </div>
       </div>
@@ -684,15 +743,21 @@ CREATE POLICY "Auth write" ON cars
           <h2>Admin Panel</h2>
           <span id="adminUserEmail"></span>
         </div>
-        <button class="admin-logout" onclick="adminLogout()">
-          <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
-          Logout
-        </button>
+        <div style="display:flex;gap:8px;align-items:center">
+          <button onclick="closeAdmin()" style="display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.1);color:white;border-radius:8px;padding:7px 11px;font-size:11px;font-weight:700;border:1px solid rgba(255,255,255,.15);font-family:inherit;cursor:pointer">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Go to Homepage
+          </button>
+          <button class="admin-logout" onclick="adminLogout()">
+            <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+            Logout
+          </button>
+        </div>
       </div>
       <div class="admin-tabs">
         <button class="admin-tab active" onclick="adminTab(this,'inventory')">Inventory</button>
         <button class="admin-tab" onclick="adminTab(this,'analytics')">Analytics</button>
-        <button class="admin-tab" onclick="adminTab(this,'settings')">Settings</button>
+        <button class="admin-tab" onclick="adminTab(this,'settings');loadDisplayPrefs();loadBusinessInfo()">Settings</button>
       </div>
       <div class="admin-scroll">
 
@@ -726,11 +791,105 @@ CREATE POLICY "Auth write" ON cars
 
         <!-- Settings Tab -->
         <div id="tab-settings" style="display:none;padding:16px">
-          <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px;margin-bottom:12px">
-            <div style="font-size:12px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Connected Project</div>
-            <div style="font-size:13px;color:#60A5FA;word-break:break-all" id="settingsUrl">—</div>
+
+          <!-- 1. Business Info -->
+          <div style="margin-bottom:14px">
+            <div style="font-size:11px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;font-weight:700">📌 Business Info</div>
+            <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden">
+              <div style="padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.06)">
+                <div style="font-size:10px;color:rgba(255,255,255,.4);margin-bottom:4px">Business Name</div>
+                <input id="s_bizname" style="background:none;border:none;color:white;font-size:13px;width:100%;font-family:inherit" placeholder="IskilAutos" value="IskilAutos">
+              </div>
+              <div style="padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.06)">
+                <div style="font-size:10px;color:rgba(255,255,255,.4);margin-bottom:4px">WhatsApp Number</div>
+                <input id="s_wanum" style="background:none;border:none;color:#25D366;font-size:13px;width:100%;font-family:inherit" placeholder="08149106635" value="08149106635">
+              </div>
+              <div style="padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.06)">
+                <div style="font-size:10px;color:rgba(255,255,255,.4);margin-bottom:4px">Call Number</div>
+                <input id="s_callnum" style="background:none;border:none;color:#60A5FA;font-size:13px;width:100%;font-family:inherit" placeholder="08149106635" value="08149106635">
+              </div>
+              <div style="padding:12px 14px">
+                <div style="font-size:10px;color:rgba(255,255,255,.4);margin-bottom:4px">Business Location</div>
+                <input id="s_location" style="background:none;border:none;color:white;font-size:13px;width:100%;font-family:inherit" placeholder="Lagos, Nigeria" value="Lagos, Nigeria">
+              </div>
+            </div>
+            <button onclick="saveBusinessInfo()" style="width:100%;margin-top:8px;background:var(--blue2);color:white;border-radius:9px;padding:11px;font-size:13px;font-weight:700">Save Business Info</button>
           </div>
-          <button style="width:100%;background:rgba(220,38,38,.15);color:#FCA5A5;border:1px solid rgba(220,38,38,.2);border-radius:10px;padding:13px;font-size:13px;font-weight:700;" onclick="disconnectSupabase()">Disconnect Supabase</button>
+
+          <!-- 2. Change Password -->
+          <div style="margin-bottom:14px">
+            <div style="font-size:11px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;font-weight:700">🔐 Change Password</div>
+            <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden">
+              <div style="padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.06)">
+                <div style="font-size:10px;color:rgba(255,255,255,.4);margin-bottom:4px">Current Password</div>
+                <input id="s_oldpass" type="password" style="background:none;border:none;color:white;font-size:13px;width:100%;font-family:inherit" placeholder="••••••••">
+              </div>
+              <div style="padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.06)">
+                <div style="font-size:10px;color:rgba(255,255,255,.4);margin-bottom:4px">New Password</div>
+                <input id="s_newpass" type="password" style="background:none;border:none;color:white;font-size:13px;width:100%;font-family:inherit" placeholder="••••••••">
+              </div>
+              <div style="padding:12px 14px">
+                <div style="font-size:10px;color:rgba(255,255,255,.4);margin-bottom:4px">Confirm New Password</div>
+                <input id="s_confpass" type="password" style="background:none;border:none;color:white;font-size:13px;width:100%;font-family:inherit" placeholder="••••••••">
+              </div>
+            </div>
+            <button onclick="changePassword()" style="width:100%;margin-top:8px;background:var(--blue2);color:white;border-radius:9px;padding:11px;font-size:13px;font-weight:700">Update Password</button>
+          </div>
+
+          <!-- 3. Site Display Settings -->
+          <div style="margin-bottom:14px">
+            <div style="font-size:11px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;font-weight:700">🎨 Site Display</div>
+            <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden">
+              <div style="padding:12px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.06)">
+                <div>
+                  <div style="font-size:13px;color:white;font-weight:600">Show Trust Bar</div>
+                  <div style="font-size:11px;color:rgba(255,255,255,.4)">Verified Cars · Delivery · Stock count</div>
+                </div>
+                <label style="position:relative;width:42px;height:24px;cursor:pointer">
+                  <input type="checkbox" id="tog_trust" checked onchange="applyDisplaySettings()" style="opacity:0;width:0;height:0">
+                  <span class="stoggle"></span>
+                </label>
+              </div>
+              <div style="padding:12px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.06)">
+                <div>
+                  <div style="font-size:13px;color:white;font-weight:600">Show WhatsApp FAB</div>
+                  <div style="font-size:11px;color:rgba(255,255,255,.4)">Floating WhatsApp button</div>
+                </div>
+                <label style="position:relative;width:42px;height:24px;cursor:pointer">
+                  <input type="checkbox" id="tog_wafab" checked onchange="applyDisplaySettings()" style="opacity:0;width:0;height:0">
+                  <span class="stoggle"></span>
+                </label>
+              </div>
+              <div style="padding:12px 14px;display:flex;justify-content:space-between;align-items:center">
+                <div>
+                  <div style="font-size:13px;color:white;font-weight:600">Show Refer &amp; Earn Tab</div>
+                  <div style="font-size:11px;color:rgba(255,255,255,.4)">Earn page in bottom nav</div>
+                </div>
+                <label style="position:relative;width:42px;height:24px;cursor:pointer">
+                  <input type="checkbox" id="tog_refer" checked onchange="applyDisplaySettings()" style="opacity:0;width:0;height:0">
+                  <span class="stoggle"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Database Info -->
+          <div style="margin-bottom:14px">
+            <div style="font-size:11px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;font-weight:700">🗄️ Database</div>
+            <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px 14px">
+              <div style="font-size:10px;color:rgba(255,255,255,.4);margin-bottom:4px">Connected Project</div>
+              <div style="font-size:12px;color:#60A5FA;word-break:break-all" id="settingsUrl">—</div>
+              <div id="s_dbstatus" style="margin-top:8px;font-size:11px;color:#4ade80;font-weight:600">● Live</div>
+            </div>
+            <button onclick="testConnection()" style="width:100%;margin-top:8px;background:rgba(96,165,250,.1);color:#60A5FA;border:1px solid rgba(96,165,250,.2);border-radius:9px;padding:11px;font-size:13px;font-weight:700">Test Connection</button>
+          </div>
+
+          <!-- 5. Danger Zone -->
+          <div style="margin-bottom:8px">
+            <div style="font-size:11px;color:rgba(220,38,38,.6);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;font-weight:700">⚠️ Danger Zone</div>
+            <button style="width:100%;background:rgba(220,38,38,.15);color:#FCA5A5;border:1px solid rgba(220,38,38,.2);border-radius:10px;padding:13px;font-size:13px;font-weight:700;" onclick="adminLogout()">Logout &amp; Lock App</button>
+          </div>
+
         </div>
 
       </div>
@@ -745,10 +904,34 @@ CREATE POLICY "Auth write" ON cars
   <div class="add-car-sheet" id="addCarSheet">
     <div class="sheet-handle"></div>
     <div class="sheet-title" id="sheetTitle">Add New Car</div>
-    <div class="sfg"><label class="sflbl">Car Name / Model *</label><input class="sfinp" id="f_name" placeholder="e.g. Mercedes-Benz GLE 43 AMG"></div>
+
+    <!-- IMAGE UPLOAD ZONE -->
+    <div class="sfg">
+      <label class="sflbl">Photos</label>
+      <div id="uploadZone" onclick="document.getElementById('f_imgfile').click()" style="border:2px dashed rgba(255,255,255,.15);border-radius:11px;padding:18px 12px;text-align:center;cursor:pointer;background:rgba(255,255,255,.03);transition:border-color .2s">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="1.5" style="margin:0 auto 7px;display:block"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <div style="font-size:13px;color:rgba(255,255,255,.5);font-weight:600">Tap to upload photos</div>
+        <div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:3px">JPG, PNG — up to 5 images</div>
+      </div>
+      <input type="file" id="f_imgfile" accept="image/*" multiple style="display:none" onchange="handleImgUpload(this.files)">
+      <!-- Upload progress -->
+      <div id="uploadProgress" style="display:none;margin-top:8px">
+        <div style="background:rgba(255,255,255,.08);border-radius:6px;height:6px;overflow:hidden">
+          <div id="uploadBar" style="height:100%;background:var(--blue2);width:0%;transition:width .3s;border-radius:6px"></div>
+        </div>
+        <div id="uploadStatus" style="font-size:11px;color:rgba(255,255,255,.5);margin-top:5px;text-align:center">Uploading…</div>
+      </div>
+      <!-- Image previews -->
+      <div id="imgPreviews" style="display:flex;gap:7px;flex-wrap:wrap;margin-top:8px"></div>
+      <!-- Hidden fields storing URLs -->
+      <input type="hidden" id="f_image">
+      <input type="hidden" id="f_images">
+    </div>
+
+    <div class="sfg"><label class="sflbl">Car Name / Model *</label><input class="sfinp" id="f_name" placeholder="e.g. Toyota Camry 2021"></div>
     <div class="sfrow">
-      <div class="sfg"><label class="sflbl">Year *</label><input class="sfinp" id="f_year" placeholder="2022" type="number"></div>
-      <div class="sfg"><label class="sflbl">Price *</label><input class="sfinp" id="f_price" placeholder="₦52,000,000"></div>
+      <div class="sfg"><label class="sflbl">Year</label><input class="sfinp" id="f_year" placeholder="2021" type="number"></div>
+      <div class="sfg"><label class="sflbl">Price *</label><input class="sfinp" id="f_price" placeholder="₦32,000,000"></div>
     </div>
     <div class="sfrow">
       <div class="sfg"><label class="sflbl">Brand</label>
@@ -782,13 +965,7 @@ CREATE POLICY "Auth write" ON cars
       </div>
     </div>
     <div class="sfg"><label class="sflbl">Location</label><input class="sfinp" id="f_location" placeholder="Lekki, Lagos"></div>
-    <div class="sfg">
-      <label class="sflbl">Main Image URL *</label>
-      <input class="sfinp" id="f_image" placeholder="https://..." oninput="previewImg(this.value)">
-      <div class="img-url-preview" id="imgPreview"><img id="imgPreviewImg" src="" alt=""></div>
-    </div>
-    <div class="sfg"><label class="sflbl">Extra Images (comma-separated URLs)</label><textarea class="sftextarea" id="f_images" placeholder="https://img1.jpg, https://img2.jpg"></textarea></div>
-    <div class="sfg"><label class="sflbl">Description</label><textarea class="sftextarea" id="f_desc" placeholder="Describe the car condition, history, features…"></textarea></div>
+    <div class="sfg"><label class="sflbl">Description</label><textarea class="sftextarea" id="f_desc" placeholder="Describe condition, history…"></textarea></div>
     <div class="sfg"><label class="sflbl">Key Features (comma-separated)</label><input class="sfinp" id="f_features" placeholder="Sunroof, Leather Seats, 360 Camera"></div>
     <div class="sheet-btns">
       <button class="btn-cancel" onclick="closeAddCar()">Cancel</button>
@@ -810,16 +987,16 @@ CREATE POLICY "Auth write" ON cars
       <a class="drw-link" onclick="go('refer');closeDrawer()"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>Refer & Earn</a>
     </div>
     <div class="drw-bottom">
-      <button class="drw-wa-btn" onclick="toast_('Opening WhatsApp 💬');closeDrawer()"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51A3.9 3.9 0 0011.432 2c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp Us</button>
+      <button class="drw-wa-btn" onclick="window.open('https://wa.me/2348149106635','_blank');closeDrawer()"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51A3.9 3.9 0 0011.432 2c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp Us</button>
       <button class="drw-admin-btn" onclick="openAdmin();closeDrawer()"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>Admin Panel</button>
     </div>
   </div>
 </div>
 
 <script>
-/* ══════════════════════════════════════
+/* 
    SUPABASE + STATE
-══════════════════════════════════════ */
+ */
 let sb = null;
 let ALL_CARS = [];
 let editingId = null;
@@ -838,15 +1015,37 @@ const DEMO_CARS = [
 
 const SB_URL = "https://ibygazkyxxikntlubrsl.supabase.co";
 const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlieWdhemt5eHhpa250bHVicnNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwNTk5OTQsImV4cCI6MjA4ODYzNTk5NH0.PFyUuMvGM-GktXoM5Oqlsw3CYFxzbYgSKVAk86ThNuQ";
-const SB_EMAIL = "iskilautos@gmail.com";
-const SB_PASS = "Iskilautos.";
 
-/* ══ INIT ══ */
+// Admin credentials (username/password login — no Supabase Auth needed)
+const ADMIN_USERS = [
+  { username: "Iskil",  password: "myapp" },
+  { username: "iskilautos", password: "Iskilautos." }
+];
+
+/* ---- */
 window.addEventListener("load", async ()=>{
   try{
     sb = supabase.createClient(SB_URL, SB_KEY);
-    localStorage.setItem('sb_config', JSON.stringify({url: SB_URL, key: SB_KEY}));
+    // Restore admin session if previously logged in
+    const saved = localStorage.getItem("sb_config");
+    if(saved){
+      try{
+        const cfg = JSON.parse(saved);
+        if(cfg.username){
+          document.getElementById("adminUserEmail").textContent = cfg.username;
+          document.getElementById("settingsUrl").textContent = SB_URL;
+          // Auto-restore dashboard if admin overlay is open
+          const overlay = document.getElementById("adminOverlay");
+          if(overlay && overlay.classList.contains("show")){
+            showAdminDashboard();
+          }
+        }
+      }catch(e){}
+    }
     loadCarsFromSupabase();
+    loadBusinessInfo();
+    loadDisplayPrefs();
+    checkLockStatus();
   }catch(e){
     loadDemoCars();
   }
@@ -870,10 +1069,11 @@ async function loadCarsFromSupabase(){
   if(!sb){ loadDemoCars(); return; }
   try{
     const {data,error} = await sb.from('cars').select('*').order('created_at',{ascending:false});
-    if(error || !data || data.length===0){
-      ALL_CARS = DEMO_CARS;
-    } else {
+    if(!error && data && data.length > 0){
       ALL_CARS = data;
+    } else {
+      // Supabase empty or error — show demo cars on site, but note this in admin
+      ALL_CARS = DEMO_CARS;
     }
     renderAll(ALL_CARS);
   }catch(e){
@@ -882,7 +1082,7 @@ async function loadCarsFromSupabase(){
   }
 }
 
-/* ══ RENDER ══ */
+/* ---- */
 function renderAll(cars){
   renderGrid(document.getElementById('homeGrid'), cars);
   renderGrid(document.getElementById('buyGrid'), cars);
@@ -924,7 +1124,7 @@ function renderGrid(el, cars){
   el.innerHTML = cars.map(c=>smallCard(c)).join('');
 }
 
-/* ══ NAVIGATION ══ */
+/* ---- */
 function go(page){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.bitem').forEach(b=>b.classList.remove('active'));
@@ -935,7 +1135,7 @@ function go(page){
   document.getElementById('scroller').scrollTop = 0;
 }
 
-/* ══ DETAIL ══ */
+/* ---- */
 function openDetail(id){
   const c = ALL_CARS.find(x=>String(x.id)===String(id));
   if(!c) return;
@@ -973,7 +1173,7 @@ function toggleDesc(){
   b.textContent=d.classList.contains('open')?'Show less ↑':'Read more ↓';
 }
 
-/* ══ FILTERS ══ */
+/* ---- */
 function catFilter(el,val){
   document.querySelectorAll('.cat').forEach(c=>c.classList.remove('active'));
   el.classList.add('active');
@@ -1008,61 +1208,140 @@ function liveSearch(v){
   document.getElementById('rcount').textContent=res.length+' Result'+(res.length!==1?'s':'');
 }
 
-/* ══════════════════════════
+/* 
    ADMIN PANEL
-══════════════════════════ */
+ */
 function openAdmin(){
   document.getElementById("adminOverlay").classList.add("show");
+  // If already logged in, go straight to dashboard
   const saved = localStorage.getItem("sb_config");
   if(saved){
     try{
-      const {url} = JSON.parse(saved);
-      document.getElementById("sbUrl").value = url||"";
-      document.getElementById("settingsUrl").textContent = url||"—";
-    }catch(e){}
-  }
-  if(sb){
-    sb.auth.getSession().then(({data:{session}})=>{
-      if(session){
-        document.getElementById("adminUserEmail").textContent = session.user.email;
+      const cfg = JSON.parse(saved);
+      if(cfg.username){
+        document.getElementById("adminUserEmail").textContent = cfg.username;
+        document.getElementById("settingsUrl").textContent = SB_URL;
         showAdminDashboard();
+        return;
       }
-    });
+    }catch(e){}
   }
 }
 function closeAdmin(){ document.getElementById('adminOverlay').classList.remove('show'); }
 
-async function connectSupabase(){
-  const url = SB_URL;
-  const key = SB_KEY;
-  const email = document.getElementById('sbEmail').value.trim() || SB_EMAIL;
-  const pass = document.getElementById('sbPass').value.trim() || SB_PASS;
-  if(!email||!pass){ aToast('Please enter your email and password'); return; }
-  try{
-    sb = supabase.createClient(url, key);
-    const {data,error} = await sb.auth.signInWithPassword({email,password:pass});
-    if(error){
-      aToast('Login failed: ' + error.message + ' — Please reset your password in Supabase dashboard.');
-      sb = supabase.createClient(url, key); // keep sb for public reads
-      return;
-    }
-    localStorage.setItem('sb_config', JSON.stringify({url,key}));
-    document.getElementById('connStatus').className='conn-status connected';
-    document.getElementById('connText').textContent='Connected';
-    document.getElementById('adminUserEmail').textContent=data.user.email;
-    document.getElementById('settingsUrl').textContent=url;
-    showAdminDashboard();
-    loadAdminCars();
-    loadCarsFromSupabase();
-    aToast('Connected! Logged in as '+data.user.email);
-  }catch(e){ aToast('Connection error: '+e.message); }
+
+/* ---- SECURITY ---- */
+const MAX_ATTEMPTS = 5;
+const LOCK_DURATION = 30;
+let loginAttempts = parseInt(sessionStorage.getItem('login_attempts') || '0');
+let isLocked = false;
+
+function checkLockStatus(){
+  const lockedUntil = parseInt(sessionStorage.getItem('locked_until') || '0');
+  if(lockedUntil && Date.now() < lockedUntil){
+    triggerLock(Math.ceil((lockedUntil - Date.now()) / 1000));
+    return true;
+  }
+  return false;
 }
 
-async function adminLogout(){
-  if(sb) await sb.auth.signOut();
+function triggerLock(seconds){
+  isLocked = true;
+  const screen = document.getElementById('lockScreen');
+  const countdown = document.getElementById('lockCountdown');
+  if(!screen) return;
+  screen.classList.add('show');
+  let t = seconds;
+  if(countdown) countdown.textContent = t;
+  const iv = setInterval(()=>{
+    t--;
+    if(countdown) countdown.textContent = t;
+    if(t <= 0){
+      clearInterval(iv);
+      isLocked = false;
+      loginAttempts = 0;
+      sessionStorage.removeItem('login_attempts');
+      sessionStorage.removeItem('locked_until');
+      screen.classList.remove('show');
+    }
+  }, 1000);
+}
+
+function recordFailedAttempt(){
+  loginAttempts++;
+  sessionStorage.setItem('login_attempts', loginAttempts);
+  if(loginAttempts >= MAX_ATTEMPTS){
+    const until = Date.now() + LOCK_DURATION * 1000;
+    sessionStorage.setItem('locked_until', until);
+    triggerLock(LOCK_DURATION);
+  } else {
+    const remaining = MAX_ATTEMPTS - loginAttempts;
+    showLoginErr('Wrong username or password. ' + remaining + ' attempt' + (remaining===1?'':'s') + ' left.');
+  }
+}
+
+function showLoginErr(msg){
+  let err = document.getElementById('loginErr');
+  if(!err){
+    err = document.createElement('div');
+    err.id = 'loginErr';
+    err.style.cssText = 'color:#FCA5A5;font-size:13px;font-weight:600;margin-top:8px;text-align:center;padding:8px;background:rgba(220,38,38,.15);border-radius:8px;width:100%;max-width:340px';
+    const btn = document.getElementById('sbPass');
+    if(btn) btn.closest('div').parentElement.after(err);
+    else document.querySelector('.btn-setup').before(err);
+  }
+  err.textContent = msg;
+  setTimeout(()=>{ if(err) err.textContent=''; }, 4000);
+}
+
+async function connectSupabase(){
+  const username = document.getElementById('sbEmail').value.trim();
+  const pass = document.getElementById('sbPass').value.trim();
+
+  // Show inline error under form
+  function loginErr(msg){
+    let err = document.getElementById('loginErr');
+    if(!err){ err=document.createElement('div'); err.id='loginErr'; err.style.cssText='color:#FCA5A5;font-size:12px;font-weight:600;margin-top:6px;text-align:center'; document.getElementById('sbPass').parentElement.parentElement.appendChild(err); }
+    err.textContent = msg;
+    setTimeout(()=>{ if(err) err.textContent=''; }, 3000);
+  }
+
+  if(!username || !pass){ loginErr('Please enter your username and password'); return; }
+  if(checkLockStatus()) return;
+
+  const match = ADMIN_USERS.find(u =>
+    u.username.toLowerCase() === username.toLowerCase() && u.password === pass
+  );
+  if(!match){ recordFailedAttempt(); return; }
+
+  // Success — reset attempts
+  loginAttempts = 0;
+  sessionStorage.removeItem('login_attempts');
+  sessionStorage.removeItem('locked_until');
+
+  // Connect Supabase for data
+  try{
+    if(!sb) sb = supabase.createClient(SB_URL, SB_KEY);
+    localStorage.setItem('sb_config', JSON.stringify({url: SB_URL, key: SB_KEY, username: match.username}));
+    document.getElementById('connStatus').className='conn-status connected';
+    document.getElementById('connText').textContent='Connected';
+    document.getElementById('adminUserEmail').textContent = match.username;
+    const sUrl = document.getElementById('settingsUrl');
+    if(sUrl) sUrl.textContent = SB_URL;
+    showAdminDashboard();
+    loadCarsFromSupabase();
+  }catch(e){
+    loginErr('Connection error: '+e.message);
+  }
+}
+
+function adminLogout(){
+  localStorage.removeItem('sb_config');
   document.getElementById('setupScreen').style.display='flex';
   document.getElementById('adminDashboard').style.display='none';
-  aToast('Logged out');
+  document.getElementById('sbEmail').value='';
+  document.getElementById('sbPass').value='';
+  aToast('Logged out successfully');
 }
 
 function disconnectSupabase(){
@@ -1077,24 +1356,40 @@ function disconnectSupabase(){
 
 function showAdminDashboard(){
   document.getElementById('setupScreen').style.display='none';
-  document.getElementById('adminDashboard').style.display='flex';
+  const dash = document.getElementById('adminDashboard');
+  dash.style.display='flex';
+  dash.style.flex='1';
+  dash.style.flexDirection='column';
   loadAdminCars();
 }
 
 async function loadAdminCars(){
   const el = document.getElementById('adminCarList');
   el.innerHTML='<div class="spinner"><div class="spin"></div></div>';
-  let cars;
+  let cars = [];
   if(sb){
-    const {data,error}=await sb.from('cars').select('*').order('created_at',{ascending:false});
-    cars = (!error&&data) ? data : DEMO_CARS;
-  } else { cars = DEMO_CARS; }
+    try{
+      const {data,error}=await sb.from('cars').select('*').order('created_at',{ascending:false});
+      if(!error && data && data.length > 0){
+        cars = data;
+        ALL_CARS = data; // keep in sync
+      } else {
+        // Supabase connected but table empty or error — use ALL_CARS (demo or whatever is loaded)
+        cars = ALL_CARS.length ? ALL_CARS : DEMO_CARS;
+      }
+    }catch(e){ cars = ALL_CARS.length ? ALL_CARS : DEMO_CARS; }
+  } else {
+    cars = ALL_CARS.length ? ALL_CARS : DEMO_CARS;
+  }
   // update stats
   document.getElementById('statTotal').textContent=cars.length;
   document.getElementById('statNew').textContent=cars.filter(c=>c.status==='new').length;
   document.getElementById('statUsed').textContent=cars.filter(c=>c.status==='used').length;
   document.getElementById('statBrands').textContent=[...new Set(cars.map(c=>c.brand).filter(Boolean))].length;
-  if(!cars.length){ el.innerHTML='<div class="empty-state"><svg viewBox="0 0 24 24"><path d="M5 11l1.5-4.5h11L19 11M3 11l1 5h16l1-5M5 11h14M8 16v2M16 16v2"/></svg><p>No cars yet. Add your first car!</p></div>'; return; }
+  if(!cars.length){
+    el.innerHTML='<div style="text-align:center;padding:32px 16px;color:rgba(255,255,255,.4)"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin:0 auto 10px;display:block"><path d="M5 11l1.5-4.5h11L19 11M3 11l1 5h16l1-5M5 11h14M8 16v2M16 16v2"/></svg><p style="font-size:13px">No cars yet. Tap Add Car to get started!</p></div>';
+    return;
+  }
   el.innerHTML = cars.map(c=>`
     <div class="admin-car-card">
       <div class="acc-img"><img src="${c.image_url||''}" alt="${c.name}" onerror="this.src='https://placehold.co/120x90/1a2e55/60A5FA?text=Car'"></div>
@@ -1104,8 +1399,8 @@ async function loadAdminCars(){
         <div class="acc-loc">${c.location||'—'} · ${(c.status||'used').toUpperCase()}</div>
       </div>
       <div class="acc-actions">
-        <button class="btn-edit" onclick="editCar('${c.id}')"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-        <button class="btn-del" onclick="deleteCar('${c.id}')"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg></button>
+        <button class="btn-edit" onclick="editCar('${c.id}')" title="Edit"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+        <button class="btn-del" onclick="deleteCar('${c.id}')" title="Delete"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg></button>
       </div>
     </div>`).join('');
 }
@@ -1116,7 +1411,7 @@ function adminTab(el,tab){
   ['inventory','analytics','settings'].forEach(t=>{ const el=document.getElementById('tab-'+t); if(el)el.style.display=t===tab?'block':'none'; });
 }
 
-/* ══ ADD/EDIT CAR ══ */
+/* ---- */
 function openAddCar(id=null){
   editingId=id;
   clearForm();
@@ -1138,7 +1433,24 @@ function openAddCar(id=null){
       document.getElementById('f_images').value=c.images||'';
       document.getElementById('f_desc').value=c.description||'';
       document.getElementById('f_features').value=c.features||'';
-      if(c.image_url) previewImg(c.image_url);
+      // Load existing images as previews
+      uploadedUrls=[];
+      const existingImgs = [c.image_url, ...(c.images?c.images.split(',').map(s=>s.trim()).filter(Boolean):[])].filter(Boolean);
+      const previews = document.getElementById('imgPreviews');
+      previews.innerHTML='';
+      existingImgs.forEach(url=>{
+        uploadedUrls.push(url);
+        const thumb = document.createElement('div');
+        thumb.style.cssText='position:relative;width:72px;height:58px;border-radius:8px;overflow:hidden;flex-shrink:0';
+        const tImg = document.createElement('img');
+        tImg.src=url; tImg.style.cssText='width:100%;height:100%;object-fit:cover';
+        const tBtn = document.createElement('button');
+        tBtn.textContent='×'; tBtn.dataset.url=url;
+        tBtn.setAttribute('onclick','removeUploadedImg(this)');
+        tBtn.style.cssText='position:absolute;top:2px;right:2px;width:16px;height:16px;background:rgba(0,0,0,.7);border-radius:50%;color:white;font-size:10px;display:flex;align-items:center;justify-content:center';
+        thumb.appendChild(tImg); thumb.appendChild(tBtn);
+        previews.appendChild(thumb);
+      });
     }
   } else {
     document.getElementById('sheetTitle').textContent='Add New Car';
@@ -1152,11 +1464,71 @@ function clearForm(){
   document.getElementById('f_status').value='used';
   document.getElementById('f_trans').value='Automatic';
   document.getElementById('f_fuel').value='Gasoline';
-  document.getElementById('imgPreview').style.display='none';
+  document.getElementById('imgPreviews').innerHTML='';
+  document.getElementById('uploadProgress').style.display='none';
+  uploadedUrls=[];
 }
-function previewImg(url){
-  const p=document.getElementById('imgPreview'),img=document.getElementById('imgPreviewImg');
-  if(url.startsWith('http')){p.style.display='block';img.src=url;}else{p.style.display='none';}
+
+/* ---- */
+let uploadedUrls = [];
+
+async function handleImgUpload(files){
+  if(!files||!files.length) return;
+  if(!sb){ aToast('Connect to Supabase first'); return; }
+
+  const prog = document.getElementById('uploadProgress');
+  const bar = document.getElementById('uploadBar');
+  const status = document.getElementById('uploadStatus');
+  const previews = document.getElementById('imgPreviews');
+  prog.style.display='block';
+
+  const fileArr = Array.from(files).slice(0,5); // max 5
+  let done = 0;
+
+  for(const file of fileArr){
+    const ext = file.name.split('.').pop();
+    const fileName = 'cars/' + Date.now() + '_' + Math.random().toString(36).slice(2) + '.' + ext;
+    status.textContent = 'Uploading ' + (done+1) + ' of ' + fileArr.length + '…';
+
+    try{
+      const { data, error } = await sb.storage.from('car-images').upload(fileName, file, {
+        cacheControl: '3600', upsert: false
+      });
+      if(error){ aToast('Upload error: '+error.message); }
+      else{
+        const { data: urlData } = sb.storage.from('car-images').getPublicUrl(fileName);
+        const url = urlData.publicUrl;
+        uploadedUrls.push(url);
+        // Show preview thumbnail
+        const thumb = document.createElement('div');
+        thumb.style.cssText='position:relative;width:72px;height:58px;border-radius:8px;overflow:hidden;flex-shrink:0';
+        const tImg = document.createElement('img');
+        tImg.src=url; tImg.style.cssText='width:100%;height:100%;object-fit:cover';
+        const tBtn = document.createElement('button');
+        tBtn.textContent='×'; tBtn.dataset.url=url;
+        tBtn.setAttribute('onclick','removeUploadedImg(this)');
+        tBtn.style.cssText='position:absolute;top:2px;right:2px;width:16px;height:16px;background:rgba(0,0,0,.7);border-radius:50%;color:white;font-size:10px;display:flex;align-items:center;justify-content:center';
+        thumb.appendChild(tImg); thumb.appendChild(tBtn);
+        previews.appendChild(thumb);
+        // First image = main, rest = extras
+        document.getElementById('f_image').value = uploadedUrls[0];
+        document.getElementById('f_images').value = uploadedUrls.slice(1).join(',');
+      }
+    }catch(e){ aToast('Error: '+e.message); }
+
+    done++;
+    bar.style.width = Math.round((done/fileArr.length)*100)+'%';
+  }
+  status.textContent = '✅ ' + uploadedUrls.length + ' photo(s) uploaded';
+  setTimeout(()=>{ prog.style.display='none'; }, 2000);
+}
+
+function removeUploadedImg(btn){
+  const url = btn.getAttribute('data-url');
+  btn.parentElement.remove();
+  uploadedUrls = uploadedUrls.filter(u=>u!==url);
+  document.getElementById('f_image').value = uploadedUrls[0]||'';
+  document.getElementById('f_images').value = uploadedUrls.slice(1).join(',');
 }
 
 async function saveCar(){
@@ -1180,44 +1552,62 @@ async function saveCar(){
   };
   document.getElementById('saveBtn').style.display='none';
   document.getElementById('saveLoading').style.display='flex';
-  if(sb){
+  const isDemo = !editingId || String(editingId).startsWith('demo-');
+
+  if(sb && !isDemo){
+    // Real Supabase car — update in DB
     try{
-      let result;
-      if(editingId && !String(editingId).startsWith('demo-')){
-        result = await sb.from('cars').update(carData).eq('id',editingId);
-      } else {
-        result = await sb.from('cars').insert([carData]);
+      const result = await sb.from('cars').update(carData).eq('id', editingId);
+      if(result.error){ aToast('Save error: '+result.error.message); }
+      else{
+        ALL_CARS = ALL_CARS.map(c=>String(c.id)===String(editingId)?{...c,...carData}:c);
+        renderAll(ALL_CARS); loadAdminCars();
+        aToast('✅ Car updated!'); closeAddCar();
       }
-      if(result.error){ aToast('Error: '+result.error.message); }
-      else{ aToast(editingId?'Car updated!':'Car added!'); closeAddCar(); loadAdminCars(); loadCarsFromSupabase(); }
+    }catch(e){ aToast('Error: '+e.message); }
+  } else if(sb && !editingId){
+    // New car — insert into Supabase
+    try{
+      const result = await sb.from('cars').insert([carData]).select();
+      if(result.error){ aToast('Save error: '+result.error.message); }
+      else{
+        const newCar = result.data ? result.data[0] : {...carData, id:'sb-'+Date.now()};
+        ALL_CARS = [newCar, ...ALL_CARS];
+        renderAll(ALL_CARS); loadAdminCars();
+        aToast('✅ Car added to Supabase!'); closeAddCar();
+      }
     }catch(e){ aToast('Error: '+e.message); }
   } else {
-    // Demo mode — just add locally
-    const newCar = {...carData, id:'demo-'+Date.now()};
-    if(editingId){ ALL_CARS = ALL_CARS.map(c=>String(c.id)===String(editingId)?{...c,...carData}:c); }
-    else { ALL_CARS = [newCar,...ALL_CARS]; }
-    renderAll(ALL_CARS);
-    loadAdminCars();
-    aToast(editingId?'Updated (demo mode)':'Added (demo mode — connect Supabase to persist)');
-    closeAddCar();
+    // Demo car edit or no Supabase — update locally
+    if(editingId){
+      ALL_CARS = ALL_CARS.map(c=>String(c.id)===String(editingId)?{...c,...carData}:c);
+      aToast('✅ Car updated!');
+    } else {
+      const newCar = {...carData, id:'demo-'+Date.now()};
+      ALL_CARS = [newCar, ...ALL_CARS];
+      aToast('Car added locally');
+    }
+    renderAll(ALL_CARS); loadAdminCars(); closeAddCar();
   }
   document.getElementById('saveBtn').style.display='';
   document.getElementById('saveLoading').style.display='none';
 }
 
 async function deleteCar(id){
-  if(!confirm('Delete this car?')) return;
+  const car = ALL_CARS.find(c=>String(c.id)===String(id));
+  const name = car ? (car.year?car.year+' ':'')+car.name : 'this car';
+  if(!confirm('Delete "' + name + '"? This cannot be undone.')) return;
   if(sb && !String(id).startsWith('demo-')){
     const {error}=await sb.from('cars').delete().eq('id',id);
     if(error){ aToast('Error: '+error.message); return; }
   }
-  ALL_CARS=ALL_CARS.filter(c=>String(c.id)!==String(id));
+  ALL_CARS = ALL_CARS.filter(c=>String(c.id)!==String(id));
   renderAll(ALL_CARS);
   loadAdminCars();
-  aToast('Car deleted');
+  aToast('🗑️ Car deleted');
 }
 
-/* ══ UTILS ══ */
+/* ---- */
 function toggleSQL(){
   const b = document.getElementById('sqlBlock');
   const a = document.getElementById('sqlArrow');
@@ -1229,6 +1619,12 @@ function copySQL(){
   const sql = document.getElementById('sqlCode').textContent;
   navigator.clipboard.writeText(sql).catch(()=>{});
   aToast('SQL copied! Paste it in Supabase → SQL Editor 📋');
+}
+function waAboutCar(){
+  const title = document.getElementById('dtitle').textContent || 'a car';
+  const price = document.getElementById('dprice').textContent || '';
+  const msg = encodeURIComponent('Hi IskilAutos! I\'m interested in the ' + title + ' ' + price + '. Is it still available?');
+  window.open('https://wa.me/2348149106635?text=' + msg, '_blank');
 }
 function favCar(e){ e.stopPropagation(); toast_('Added to favourites ❤️'); }
 function copyRef(){ navigator.clipboard.writeText(document.getElementById('refLink').value).catch(()=>{}); toast_('Link copied! 🎉'); }
@@ -1245,5 +1641,13 @@ function aToast(msg){
   clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),2800);
 }
 </script>
+
+<!-- LOCK SCREEN (rate limiting) -->
+<div id="lockScreen">
+  <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+  <h2>App Locked</h2>
+  <p>Too many failed login attempts.<br>Please wait before trying again.</p>
+  <div id="lockCountdown">30</div>
+</div>
 </body>
 </html>
