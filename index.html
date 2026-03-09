@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -611,27 +612,21 @@ select.sfinp option{background:#1a2e55;color:white}
       <!-- Logo + title -->
       <div class="setup-logo"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg></div>
       <h2 style="font-family:'Sora',sans-serif;font-size:22px;font-weight:800;color:white;margin-bottom:6px">Admin Login</h2>
-      <p style="color:rgba(255,255,255,.55);font-size:13px;line-height:1.6;margin-bottom:18px">Enter your Supabase credentials to connect and manage your inventory.</p>
+      <p style="color:rgba(255,255,255,.55);font-size:13px;line-height:1.6;margin-bottom:18px">Enter your password to access the admin dashboard.</p>
 
       <!-- Status pill -->
       <div id="connStatus" class="conn-status disconnected" style="margin-bottom:18px"><div class="dot"></div><span id="connText">Not Connected</span></div>
 
-      <!-- ★ INPUT FIELDS FIRST ★ -->
+      <!-- ★ INPUT FIELDS ★ -->
       <div style="width:100%;max-width:340px;display:flex;flex-direction:column;gap:11px;margin-bottom:16px">
+        <input id="sbUrl" type="hidden" value="https://ibygazkyxxikntlubrsl.supabase.co">
+        <input id="sbKey" type="hidden" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlieWdhemt5eHhpa250bHVicnNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwNTk5OTQsImV4cCI6MjA4ODYzNTk5NH0.PFyUuMvGM-GktXoM5Oqlsw3CYFxzbYgSKVAk86ThNuQ">
         <div style="text-align:left">
-          <label class="setup-label">Supabase Project URL</label>
-          <input class="setup-input" id="sbUrl" placeholder="https://xxxx.supabase.co" type="url" autocomplete="off">
+          <label class="setup-label">Email</label>
+          <input class="setup-input" id="sbEmail" placeholder="iskilautos@gmail.com" type="email" autocomplete="email" value="iskilautos@gmail.com">
         </div>
         <div style="text-align:left">
-          <label class="setup-label">Supabase Anon Key</label>
-          <input class="setup-input" id="sbKey" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6Ikp..." type="password" autocomplete="off">
-        </div>
-        <div style="text-align:left">
-          <label class="setup-label">Admin Email</label>
-          <input class="setup-input" id="sbEmail" placeholder="admin@iskilautos.com" type="email" autocomplete="email">
-        </div>
-        <div style="text-align:left">
-          <label class="setup-label">Admin Password</label>
+          <label class="setup-label">Password</label>
           <input class="setup-input" id="sbPass" placeholder="••••••••" type="password" autocomplete="current-password">
         </div>
       </div>
@@ -639,8 +634,8 @@ select.sfinp option{background:#1a2e55;color:white}
       <button class="btn-setup" onclick="connectSupabase()" style="width:100%;max-width:340px;margin-bottom:10px">Connect &amp; Sign In</button>
       <div style="color:rgba(255,255,255,.35);font-size:12px;margin-bottom:24px;cursor:pointer" onclick="closeAdmin()">← Back to app</div>
 
-      <!-- SQL reference — collapsed by default -->
-      <div style="width:100%;max-width:340px;text-align:left">
+      <!-- SQL reference — hidden -->
+      <div style="width:100%;max-width:340px;text-align:left;display:none">
         <button onclick="toggleSQL()" style="width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:11px 14px;color:rgba(255,255,255,.6);font-size:12px;font-weight:600;display:flex;justify-content:space-between;align-items:center;margin-bottom:0" id="sqlToggleBtn">
           <span>📋 View SQL to create cars table</span>
           <span id="sqlArrow">▼</span>
@@ -677,7 +672,7 @@ CREATE POLICY "Auth write" ON cars
         </div>
       </div>
 
-      <p style="color:rgba(255,255,255,.25);font-size:11px;margin-top:20px">Get your URL &amp; Key from <a href="https://supabase.com" target="_blank" style="color:#60A5FA">supabase.com</a> → Settings → API</p>
+
     </div>
   </div>
 
@@ -841,29 +836,20 @@ const DEMO_CARS = [
   {id:'demo-9',name:'Lexus LX 600',year:'2023',price:'₦145,000,000',brand:'Lexus',type:'Luxury',status:'used',mileage:'5,000 km',transmission:'Automatic',fuel:'Gasoline',location:'Asokoro, Abuja',description:'2023 Lexus LX 600. Nigeria\'s most premium SUV. Twin-turbo V6, 7-seat configuration.',features:'Twin-Turbo V6,7 Seats,E-KDSS,Mark Levinson 25sp,Multi-terrain,Night Vision',image_url:'https://images.unsplash.com/photo-1619976215249-ed4e1ade5d52?w=600&q=80',images:'https://images.unsplash.com/photo-1619976215249-ed4e1ade5d52?w=800&q=80'},
 ];
 
+const SB_URL = "https://ibygazkyxxikntlubrsl.supabase.co";
+const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlieWdhemt5eHhpa250bHVicnNsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwNTk5OTQsImV4cCI6MjA4ODYzNTk5NH0.PFyUuMvGM-GktXoM5Oqlsw3CYFxzbYgSKVAk86ThNuQ";
+const SB_EMAIL = "iskilautos@gmail.com";
+const SB_PASS = "Iskilautos.";
+
 /* ══ INIT ══ */
 window.addEventListener("load", async ()=>{
-  const saved = localStorage.getItem("sb_config");
-  if(saved){
-    try{
-      const {url,key} = JSON.parse(saved);
-      if(url && key){
-        sb = supabase.createClient(url, key);
-        const {data:{session}} = await sb.auth.getSession();
-        if(session){
-          document.getElementById("adminUserEmail").textContent = session.user.email;
-          document.getElementById("settingsUrl").textContent = url;
-          document.getElementById("sbUrl").value = url;
-          if(document.getElementById("adminOverlay").classList.contains("show")){
-            showAdminDashboard();
-          }
-        }
-        loadCarsFromSupabase();
-        return;
-      }
-    }catch(e){}
+  try{
+    sb = supabase.createClient(SB_URL, SB_KEY);
+    localStorage.setItem('sb_config', JSON.stringify({url: SB_URL, key: SB_KEY}));
+    loadCarsFromSupabase();
+  }catch(e){
+    loadDemoCars();
   }
-  loadDemoCars();
 });
 
 function loadDemoCars(){
@@ -1047,16 +1033,19 @@ function openAdmin(){
 function closeAdmin(){ document.getElementById('adminOverlay').classList.remove('show'); }
 
 async function connectSupabase(){
-  const url = document.getElementById('sbUrl').value.trim();
-  const key = document.getElementById('sbKey').value.trim();
-  const email = document.getElementById('sbEmail').value.trim();
-  const pass = document.getElementById('sbPass').value.trim();
-  if(!url||!key){ aToast('Please enter Supabase URL and Key'); return; }
-  if(!email||!pass){ aToast('Please enter admin email and password'); return; }
+  const url = SB_URL;
+  const key = SB_KEY;
+  const email = document.getElementById('sbEmail').value.trim() || SB_EMAIL;
+  const pass = document.getElementById('sbPass').value.trim() || SB_PASS;
+  if(!email||!pass){ aToast('Please enter your email and password'); return; }
   try{
     sb = supabase.createClient(url, key);
     const {data,error} = await sb.auth.signInWithPassword({email,password:pass});
-    if(error){ aToast('Login failed: '+error.message); sb=null; return; }
+    if(error){
+      aToast('Login failed: ' + error.message + ' — Please reset your password in Supabase dashboard.');
+      sb = supabase.createClient(url, key); // keep sb for public reads
+      return;
+    }
     localStorage.setItem('sb_config', JSON.stringify({url,key}));
     document.getElementById('connStatus').className='conn-status connected';
     document.getElementById('connText').textContent='Connected';
